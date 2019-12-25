@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Pasilo</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Pasilo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 25 Dec 2019 14:19:15 +0800</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Second</title>
+      <link>/post/second/</link>
+      <pubDate>Wed, 25 Dec 2019 14:19:15 +0800</pubDate>
+      
+      <guid>/post/second/</guid>
+      <description>second asdlfkjadslkfsdaflkjsad
+的撒法来迪斯科解放拉克丝的积分</description>
+    </item>
+    
+    <item>
+      <title>First</title>
+      <link>/post/first/</link>
+      <pubDate>Wed, 25 Dec 2019 13:22:46 +0800</pubDate>
+      
+      <guid>/post/first/</guid>
+      <description>hello asdfasdf
+撒旦发射点
+撒地方</description>
+    </item>
+    
+  </channel>
+</rss>
