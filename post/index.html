@@ -127,33 +127,19 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <article class="post post">
 
 	<div class="inner">
-		<a class="post-link" href="https://htrekker.github.io/post/second/"></a>
+		<a class="post-link" href="https://htrekker.github.io/post/skiplit/"></a>
 		
 		<span class="post-meta">
 			<span class="post-date">25 Dec 2019</span>
 		</span>
-		<h2 class="post-title"><a href="https://htrekker.github.io/post/second/">Second</a></h2>
-		<p class="post-excerpt">second asdlfkjadslkfsdaflkjsad
-的撒法来迪斯科解放拉克丝的积分</p>
-		<span class="post-more"><a href="https://htrekker.github.io/post/second/">Read more <i class="fa fa-angle-right"></i></a></span>
-	</div>
-</article>
-
-			
-			  
-<article class="post post">
-
-	<div class="inner">
-		<a class="post-link" href="https://htrekker.github.io/post/first/"></a>
-		
-		<span class="post-meta">
-			<span class="post-date">25 Dec 2019</span>
-		</span>
-		<h2 class="post-title"><a href="https://htrekker.github.io/post/first/">First</a></h2>
-		<p class="post-excerpt">hello asdfasdf
-撒旦发射点
-撒地方</p>
-		<span class="post-more"><a href="https://htrekker.github.io/post/first/">Read more <i class="fa fa-angle-right"></i></a></span>
+		<h2 class="post-title"><a href="https://htrekker.github.io/post/skiplit/">Skip List A Brief Introduction</a></h2>
+		<p class="post-excerpt">跳表  Skip lists are a data structure that can be used in place of balanced trees. Skip lists use probabilistic balancing rather than strictly enforced balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees.
+ 从链表到跳表 在具体介绍什么是跳表之前，我们可以先考虑一下链表。如果想要在链表中查询一个值是否存在，我们就需要从头到尾遍历一遍这个链表直到找到该值或者达到链表的末尾。显而易见，这种方式进行查询的时间复杂度为$O(n)$。那么，有什么办法可以加快搜索的速度呢？方法其实很简单就是加索引。
+增加索引 对于一个有序的数组，二分查找是一种非常高效的查询方式。其时间复杂度仅有$O(\log{n})$，这相比于顺序查询快了很多。如果我们把二分查找的搜索路径画出来，我们就会得到一种叫做平衡搜索树的东西（见下图）。
+此时，我们将左节点画平，右节点画直。这种数据结构就是跳表：
+A Pretty Naive Implementation 这个实现主要参考了作者的原论文1和@somenzz的博客2在这里先表示感谢！代码请见：https://github.com/htrekker/skiplist
+数据结构的设计 class SkiplistNode {int value;SkiplistNode[] next;// 使用链式的存储方式不仅效率低下而且非常浪费空间public SkiplistNode(int level, int value) {next = new SkiplistNode[level];this.</p>
+		<span class="post-more"><a href="https://htrekker.github.io/post/skiplit/">Read more <i class="fa fa-angle-right"></i></a></span>
 	</div>
 </article>
 
@@ -179,7 +165,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <div id="body-class" style="display: none;"></div>
                 <footer id="footer">
                     <section class="credits">
-                        <span class="credits-license"><i class="fa fa-copyright"></i>2019 Pasilo
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2020 Pasilo
                     </span>
                     </section>
                 </footer>
