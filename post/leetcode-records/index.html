@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:title" content=" LeetCode 做题记录 &middot;  Pasilo" />
+    <meta property="og:site_name" content="Pasilo" />
+    <meta property="og:url" content="https://htrekker.github.io/post/leetcode-records/" />
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="2019-12-25T14:57:04&#43;08:00" />
+    
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta name="twitter:title" content="LeetCode 做题记录" />
+    
+    <meta name="twitter:description" content="LeetCode做题记录 每日一题   面试题 10.01. 合并排序的数组
+原地算法逆向双指针做题记录：原地算法，双百，打卡记录
+  994. 腐烂的橘子
+多源BFS做题记录：BFS，做题记录2
+  1103. 分糖果 II
+等差数列做题记录：数学方法，做题记录3
+  面试题57 - II. 和为s的连续正数序列
+双指针滑动窗口List.toArray(T[] a)方法做题记录：双指针滑动窗口，打卡记录4
+  204. 计数质数
+素数打表欧拉筛选法做题记录：做题记录，筛选素数
+  常用算法 GCD(Stein算法) 相比于欧几里得算法，Stein算法减少了乘法计算的次数。仅通过位移和减法运算，能够使计算机更有效的完成计算。
+算法描述  判断输入的两数是否相等，或者任意一个为1。如果满足，则算法结束； 记输入的两数分别为$A_n$和$B_n$，此时分为以下三种情况：  若$A_n$, $B_n$同时为偶数，则两数同时除以2，并计算结果的最大公约数； 若$A_n$, $B_n$中有且仅有一个偶数，则将为偶数的数字除以2，并计算结果的最大公约数； 若$A_n$, $B_n$同时为奇数，则计算$A_{n&#43;1} = B_n$和$B_{n&#43;1} = \left|A_n - B_n \right|$的最大公约数。    实现 /* * An implementation of Stein algorithm */ public int gcd(int a, int b) { if(a == 0 || b == 0) return 0; if(a == b) return a; if((a &amp; 1) == 0 &amp;&amp; (b &amp; 1) == 0) return gcd(a &gt;&gt; 1, b &gt;&gt; 1) &lt;&lt; 1; if((b &amp; 1) == 0) return gcd(a, b &gt;&gt; 1); if((a &amp; 1) == 0) return gcd(a &gt;&gt; 1, b); return gcd(b, Math." />
+    <meta name="twitter:url" content="https://htrekker.github.io/post/leetcode-records/" />
+    
+
+    <title> LeetCode 做题记录 &middot;  Pasilo</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="https://htrekker.github.io//js/main.js" as="script" />
+    <link rel="preload" href="https://htrekker.github.io//css/main.css" as="style" />
+    
+    
+    <link rel="shortcut icon" href="" />
+    
+
+
+    
+    <meta name="description" content="Everything is awesome !" />
+    
+
+    
+    <meta name="p:domain_verify" content=""/>
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    
+
+    
+    <link href="https://htrekker.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Pasilo" />
+    
+
+    
+    <link rel="canonical" href="https://htrekker.github.io/post/leetcode-records/" />
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https:\/\/htrekker.github.io\/post\/leetcode-records\/"
+        },
+        "headline": "LeetCode 做题记录",
+        "description": "",
+        "author": {
+            "@type": "Person",
+            "name": "FirstName LastName",
+            "url": "http://profiles.google.com/?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:\/image\/logo.png",
+              "height": 80,
+              "width": 80
+            }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https:\/\/htrekker.github.io\/",
+          "name": "Pasilo",
+          "url": "https:\/\/htrekker.github.io\/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/image\/logo.png",
+            "height": 80,
+            "width": 80
+          }
+        },
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "\/image\/logo.png",
+          "height": 80,
+          "width": 80
+        },
+        "datePublished": "2019-12-25",
+        "dateModified": "2019-12-25",
+        "wordCount":  363 ,
+        
+    }
+    </script>
+    
+
+    
+    <script type="text/javascript">
+        
+        
+    </script>
+    
+
+    <script type="text/javascript">
+        var config = {
+            baseUrl: "https:\/\/htrekker.github.io\/"
+        };
+    </script>
+
+    <style>
+html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,figure,footer,header,main,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figure{margin:1em 40px}a{background-color:transparent;-webkit-text-decoration-skip:objects}img{border-style:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:300;src:local("Merriweather Sans Light"),local(MerriweatherSans-Light),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowY_zIojJi0m4a5Z6tRh6itY.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:400;src:local("Merriweather Sans Regular"),local(MerriweatherSans-Regular),url(//fonts.gstatic.com/s/merriweathersans/v5/AKu1CjQ4qnV8MUltkAX3sL2aU247V0zTzydO4RoO9Ok.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:700;src:local("Merriweather Sans Bold"),local(MerriweatherSans-Bold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowQfd-b-I5PxxcmB4_-MNcqw.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:normal;font-weight:800;src:local("Merriweather Sans ExtraBold"),local(MerriweatherSans-ExtraBold),url(//fonts.gstatic.com/s/merriweathersans/v5/6LmGj5dOJopQKEkt88GowWT7sFQ1Iz1BbpcuCPlgc9Q.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:300;src:local("Merriweather Sans Light Italic"),local(MerriweatherSans-LightItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVX9UU5BmOJGkLxUCVv5VXdc.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:400;src:local("Merriweather Sans Italic"),local(MerriweatherSans-Italic),url(//fonts.gstatic.com/s/merriweathersans/v5/3Mz4hOHzs2npRMG3B1ascf0KIgDhPIHb_R-SWdtqte8.woff) format("woff")}@font-face{font-family:'Merriweather Sans';font-style:italic;font-weight:700;src:local("Merriweather Sans Bold Italic"),local(MerriweatherSans-BoldItalic),url(//fonts.gstatic.com/s/merriweathersans/v5/nAqt4hiqwq3tzCecpgPmVYM8pfYvjMoOxygpzLVILAs.woff) format("woff")}@font-face {font-family: 'Aldrich';font-style: normal;font-weight: 400;src: local('Aldrich Regular'), local('Aldrich-Regular'), url('//fonts.gstatic.com/s/aldrich/v8/j-NnyokbAnhXANS2iZ6Jew.woff2') format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;font-style:normal}[class^="icon-"]:before{font-family:"icons";font-style:normal;font-weight:400;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:.2em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-arrow-right:before{content:'\e807'}.icon-rss:before{content:'\e808'}body{font:300 1em / 1.5em 'Merriweather Sans',sans-serif;color:#595B66}a{color:inherit;text-decoration:none;font-weight:400}h1,h2{text-rendering:optimizeLegibility;color:#1F2026}h2 a{font-weight:inherit}h1{font-size:2em;line-height:1em;margin:2em 0 -.5em}h2{font-size:1.75em;line-height:1.143em;margin:2.286em 0 -.571em}p{margin:2em auto}i{font-weight:400;font-style:italic;color:#363740}img{display:block;max-width:100%;height:auto;margin:2.5em auto}body{background:#fff}.inner{max-width:48em;margin:0 auto;padding:0 1em}#wrapper{position:relative;box-sizing:border-box;width:100%;min-height:100vh;padding-bottom:6em;background:#F2F3F5}#push{transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav{position:relative;background:#fff;z-index:70;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#nav:after{clear:both;content:'';display:table}#nav .nav-logo{float:left;height:2em;padding:1em;max-width:50%}#nav .nav-logo img{width:auto;max-width:none;height:2em;margin:0;border-radius:5px}#nav .nav-menu{float:right}#nav .nav-menu:after{clear:both;content:'';display:table}#nav .nav-menu a{display:block;width:1em;height:1em;line-height:1em;padding:1.5em;text-align:center;float:left}#nav .nav-menu a i:before{margin:auto}.overlay{display:none;position:fixed;left:0;top:0;width:100%;height:100%;z-index:80;display:none}.overlay:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#1F2026;opacity:0;transform-style:preserve-3d}#header{position:relative;padding:4em 0}#header .inner{position:relative;z-index:2}#header .header-title{display:block;text-align:center}#header .header-name{font-family: Aldrich, sans-serif;font-weight:700;letter-spacing:-1px;display:block;line-height:1em;font-size:2em;text-decoration:none;color:#1F2026;padding:0;margin:0}#header.has-cover .header-name{color:#fff}#header .header-description{display:block;margin:1em auto 0;color:#9D9FA6;position:relative;font-weight:300}#header .header-description:after{content:'';position:absolute;height:1px;width:100px;margin-left:-50px;left:50%;top:-.5em;background:#D4D5D9}#header.has-cover .header-description{color:#fff}#header.has-cover .header-description:after{background:#fff}#header .header-cover{position:absolute;width:100%;height:100%;top:0;left:0;margin-top:-4em;padding:4em 0;background:no-repeat fixed center 100% / cover;z-index:1}#header .header-cover:before{content:'';position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,0.2)}#header .header-cover:after{content:'';position:absolute;width:100%;left:0;bottom:0;border-bottom:4px solid #19A0D7}#footer{position:absolute;width:100%;left:0;bottom:0;font-size:.75em;line-height:1.334em;background:#1F2026;color:#737580;z-index:20;transform:translate3d(0,0,0);transform-style:preserve-3d;opacity:1}#footer a{color:#9D9FA6;font-weight:400}#footer .credits{text-align:center;font-size:.75em;line-height:1.334em;padding:2.667em;overflow:auto}#footer .credits span{display:block}#footer .credits .credits-theme{float:left}#footer .credits .credits-software{float:right}.post{position:relative;z-index:20}.post .post-image{display:block;margin:0;padding:0}.post .post-image img{display:block;width:100%;height:auto;margin:0;padding:0}.post .post-meta{display:block;font-size:.75em;line-height:1.334em;font-weight:400;margin-bottom:1.334em}.post .post-title{position:relative;color:#000;font-size:2em;line-height:1.375em;font-weight:800;text-indent:-1px;margin:.25em 0 .75em}.post .post-title:before{content:'';position:absolute;left:0;bottom:-.334em;width:1em;margin-bottom:-2px;border-bottom:4px solid #19A0D7}.post .post-title a{text-decoration:none;color:inherit;font-weight:inherit}#post-index{position:relative;max-width:1200px;margin:0 auto 4em;padding:.5em;z-index:10}@keyframes fade{0%{transform:translate3d(0,3em,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.post-list{position:relative}.post-list .post{float:left;width:33.3%;transform:translate3d(0,3em,0);transform-style:preserve-3d;opacity:0;animation:fade ease-out .5s forwards;animation-delay:1.4s}@media only screen and (max-width: 50em){.post-list .post{width:49.9%}}@media only screen and (max-width: 30em){.post-list .post{width:100%;float:none}}.post-list .post:nth-child(1){animation-delay:.1s}.post-list .post:nth-child(2){animation-delay:.2s}.post-list .post:nth-child(3){animation-delay:.3s}.post-list .post:nth-child(4){animation-delay:.4s}.post-list .post:nth-child(5){animation-delay:.5s}.post-list .post:nth-child(6){animation-delay:.6s}.post-list .post:nth-child(7){animation-delay:.7s}.post-list .post:nth-child(8){animation-delay:.8s}.post-list .post:nth-child(9){animation-delay:.9s}.post-list .post .inner{padding:2em;margin:.5em;max-width:none;background:#fff;box-sizing:border-box;transform:scale(1);transform-style:preserve-3d}@media only screen and (max-width: 50em){.post-list .post .inner{padding:1em}}.post-list .post .post-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:10}.post-list .post .post-image{position:relative;margin:-2em -2em 0;overflow:hidden;background:#19A0D7}@media only screen and (max-width: 50em){.post-list .post .post-image{margin:-1em -1em 0}}.post-list .post .post-image img{transform:scale(1);transform-style:preserve-3d;opacity:1}.post-list .post .post-image:after{content:'';position:absolute;left:-5%;bottom:-2.5em;width:110%;height:4em;background:#fff;border-top:4px solid #19A0D7;box-shadow:0 0 2em rgba(0,0,0,0.2);transform:rotate(5deg)}.post-list .post .post-title{font-size:1.5em;line-height:1.167em}.post-list .post .post-excerpt{margin:0}.post-list .post .post-more{display:block;margin-top:1.5em}.post-list .post .post-more a{display:inline-block;font-size:.875em;line-height:1.143em;font-weight:400;color:#363740}.post-list .post .post-more a i{color:#0e77a0}.pagination{min-height:3em;margin:4em auto 2em;padding:0;position:relative}.pagination .pagination-item{position:relative;display:block;height:3em;line-height:3em;padding:0 1em;text-align:center;text-decoration:none;font-weight:700;color:#363740;border:1px solid #19A0D7;border-radius:4em;z-index:60}.pagination .pagination-item i{position:relative}@media only screen and (max-width: 30em){.pagination .pagination-item{width:4em;height:4em;line-height:4em;margin-top:-.5em;padding:0!important}.pagination .pagination-item i{font-size:1.5em}.pagination .pagination-item>span{display:none}}.pagination .pagination-prev{float:right}.pagination .pagination-prev i{right:-.05em}.pagination .pagination-info{display:block;left:0;top:0;height:3em;line-height:3em;position:absolute;text-align:center;width:100%;z-index:50;color:#9D9FA6}#loader-wrapper{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000}#loader{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:3px solid transparent;border-top-color:#19A0D7;animation:spin 2s linear infinite}#loader:before{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;border-radius:50%;border:3px solid transparent;border-top-color:#0e77a0;animation:spin 3s linear infinite}#loader:after{content:"";position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;border:3px solid transparent;border-top-color:#D4D5D9;animation:spin 1.5s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+
+
+</head>
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
+            <div class="nav-logo">
+                <a href="https://htrekker.github.io/">
+                    
+                    <img src="/images/logo.png" alt="Logo"/>
+                    
+                </a>
+            </div>
+            <div id="main-menu" class="nav-menu">
+                
+                
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Search"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
+                    <input type="hidden" name="as_sitesearch" value="https://htrekker.github.io/">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
+                </form>
+                
+                
+                
+                
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                   title="Menu"><i class="fa fa-navicon"></i></a>
+                
+            </div>
+        </nav>
+
+
+<main class="content" role="main">
+    <article class="post">
+        <div class="inner">
+
+            <div id="push">
+
+                <header class="post-header">
+                
+                    <span class="post-meta">
+                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">2 min.</span> (<span class="word-count">363</span> words)</span></span>
+                    </span>
+                <div class="clear"></div>
+                
+                <h1 class="post-title">LeetCode 做题记录</h1>
+              </header>
+
+              <section class="post-content">
+                
+                  <h1 id="leetcode">LeetCode做题记录</h1>
+<h2 id="heading">每日一题</h2>
+<ol>
+<li>
+<p><strong><a href="https://leetcode-cn.com/problems/sorted-merge-lcci/">面试题 10.01. 合并排序的数组</a></strong></p>
+<p><!-- raw HTML omitted -->原地算法<!-- raw HTML omitted --> <!-- raw HTML omitted -->逆向双指针<!-- raw HTML omitted --></p>
+<p>做题记录：<a href="https://leetcode-cn.com/problems/sorted-merge-lcci/solution/yuan-di-suan-fa-shuang-bai-da-qia-ji-lu-by-htrekke/">原地算法，双百，打卡记录</a></p>
+</li>
+<li>
+<p><strong><a href="https://leetcode-cn.com/problems/rotting-oranges/">994. 腐烂的橘子</a></strong></p>
+<p><!-- raw HTML omitted -->多源BFS<!-- raw HTML omitted --></p>
+<p>做题记录：<a href="https://leetcode-cn.com/problems/rotting-oranges/solution/bfszuo-ti-ji-lu-2-by-htrekker/">BFS，做题记录2</a></p>
+</li>
+<li>
+<p><strong><a href="https://leetcode-cn.com/problems/distribute-candies-to-people/">1103. 分糖果 II</a></strong></p>
+<p><!-- raw HTML omitted -->等差数列<!-- raw HTML omitted --></p>
+<p>做题记录：<a href="https://leetcode-cn.com/problems/distribute-candies-to-people/solution/shu-xue-fang-fa-zuo-ti-ji-lu-3-by-htrekker/">数学方法，做题记录3</a></p>
+</li>
+<li>
+<p><strong><a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/">面试题57 - II. 和为s的连续正数序列</a></strong></p>
+<p><!-- raw HTML omitted -->双指针<!-- raw HTML omitted --> <!-- raw HTML omitted -->滑动窗口<!-- raw HTML omitted --> <!-- raw HTML omitted -->List.toArray(T[] a)方法<!-- raw HTML omitted --></p>
+<p>做题记录：<a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/shuang-zhi-zhen-hua-dong-chuang-kou-da-qia-ji-lu-4/">双指针滑动窗口，打卡记录4</a></p>
+</li>
+<li>
+<p><strong><a href="https://leetcode-cn.com/problems/count-primes/">204. 计数质数</a></strong></p>
+<p><!-- raw HTML omitted -->素数打表<!-- raw HTML omitted --> <!-- raw HTML omitted -->欧拉筛选法<!-- raw HTML omitted --></p>
+<p>做题记录：<a href="https://leetcode-cn.com/problems/count-primes/solution/zuo-ti-ji-lu-shai-xuan-su-shu-by-htrekker/">做题记录，筛选素数</a></p>
+</li>
+</ol>
+<h2 id="heading-1">常用算法</h2>
+<h3 id="gcdstein">GCD(Stein算法)</h3>
+<p>相比于<strong>欧几里得算法</strong>，<strong>Stein算法</strong>减少了乘法计算的次数。仅通过位移和减法运算，能够使计算机更有效的完成计算。</p>
+<h4 id="heading-2">算法描述</h4>
+<ol>
+<li>判断输入的两数是否相等，或者任意一个为1。如果满足，则算法结束；</li>
+<li>记输入的两数分别为$A_n$和$B_n$，此时分为以下三种情况：
+<ul>
+<li>若$A_n$, $B_n$同时为偶数，则两数同时除以2，并计算结果的最大公约数；</li>
+<li>若$A_n$, $B_n$中有且仅有一个偶数，则将为偶数的数字除以2，并计算结果的最大公约数；</li>
+<li>若$A_n$, $B_n$同时为奇数，则计算$A_{n+1} = B_n$和$B_{n+1} = \left|A_n - B_n \right|$的最大公约数。</li>
+</ul>
+</li>
+</ol>
+<h4 id="heading-3">实现</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/*
+</span><span style="color:#75715e">* An implementation of Stein algorithm
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gcd</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>a <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0 <span style="color:#f92672">|</span><span style="color:#f92672">|</span> b <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>a <span style="color:#f92672">=</span><span style="color:#f92672">=</span> b<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> a<span style="color:#f92672">;</span>
+    
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span>a <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0 <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#f92672">(</span>b <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">,</span> b <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span>b <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span>a <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">,</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        
+    <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>b<span style="color:#f92672">,</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>a<span style="color:#f92672">-</span>b<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>通过最大公约数，我们还可以求出两个数的最小公倍数。记两个数$a$和$b$，两个数的最小公倍数为：
+$$
+\mathrm{lcm}(a, b) = \frac{a \times b}{\mathrm{gcd}(a, b)}
+$$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lcm</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b <span style="color:#f92672">/</span> gcd<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span>b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="heading-4">链表是否有环问题(快慢指针)</h3>
+<h4 id="heading-5">算法</h4>
+<ol>
+<li>设置两个指针，一个每次移动2个节点（快指针），另一个每次移动1个节点（慢指针）；</li>
+<li>每次移动前检查两个指针的情况：
+<ul>
+<li>如果两个指针相同，则说明链表有环；</li>
+<li>如果快指针为空，或者快指针的下一个节点，即<code>fast.next == null</code>，则链表无环。</li>
+</ul>
+</li>
+</ol>
+<h4 id="heading-6">实现</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasCycle</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">,</span> slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+    
+    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>fast <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fast <span style="color:#f92672">=</span><span style="color:#f92672">=</span> slow<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这个问题更进一步可以要求我们找出环状链表和单链表的交点。方法如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasCycle</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   	<span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+    ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">,</span> slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+    
+    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+        
+    ListNode ptr <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>ptr <span style="color:#f92672">!</span><span style="color:#f92672">=</span> slow<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 此时ptr指向的是交叉节点
+</span><span style="color:#75715e"></span>    
+    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这种方法的原理是：假设单链表长度为$n$，环状链表长度为$m$。如果此时慢指针移动了$k$次。那么，快指针一定移动了$2k$次。必有$2k = k + c \cdot m$。假设在圈内一共移动了$k^{'}$次，则$k^{'} = c \cdot m - n$。故<code>ptr</code>向前移动$n$次时，慢指针又在圈内移动了$n$次。所以，$k^{'} = c \cdot m - n + n = c \cdot m$。故此时<code>ptr</code>和慢指针均处于环装链表的”入口“，即所需要求的交点。</p>
+<h3 id="-shunting-yard-algorithm">调度厂算法 (Shunting Yard Algorithm)</h3>
+<p>调度厂算法 (Shunting Yard Algorithm) 是由Dijkstra提出的将<code>中缀表达式</code>转化为<code>后缀表达式</code>的常用算法。</p>
+<ul>
+<li>中缀表达式：与人的计算习惯习惯相同，书面上的计算式即是中缀表达式；</li>
+<li>后缀表达式：后缀表达式又称为逆波兰式 (RPN) , 这种表达式最早由Friedrich L. Bauer和Dijkstra在1920年提出。所有运算符均在操作数之后，因此也被称为后缀表达式。由于这种表达式可以有效利用计算机的堆栈结构，从而可以减少计算机访存次数，加快计算速度。</li>
+</ul>
+<h4 id="heading-7">算法</h4>
+<p>在介绍调度厂算法之前，我们先考虑如何计算后缀表达式。可考虑采用如下算法：</p>
+<ul>
+<li>设置一个栈，用来储存当前或者未来将参与计算的操作数；</li>
+<li>从后缀表达式的第一项开始运算：
+<ul>
+<li>如果当前的操作符为数字，则压入栈内；</li>
+<li>如果当前的操作符为运算符，则从栈中弹出该运算所需要个数的操作数进行计算。计算完成后将计算结果压入栈内；</li>
+</ul>
+</li>
+<li>重复上述操作直到到达后缀表达式的末尾，此时栈顶元素为该表达式的运算结果</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">cal</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num1<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> num2<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> operator<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">switch</span><span style="color:#f92672">(</span>operator<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">case</span> 0<span style="color:#f92672">:</span>
+            <span style="color:#66d9ef">return</span> num1 <span style="color:#f92672">+</span> num2<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> 1<span style="color:#f92672">:</span>
+            <span style="color:#66d9ef">return</span> num2 <span style="color:#f92672">-</span> num1<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> 2<span style="color:#f92672">:</span>
+            <span style="color:#66d9ef">return</span> num1 <span style="color:#f92672">*</span> num2<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> 3<span style="color:#f92672">:</span>
+            <span style="color:#66d9ef">return</span> num2 <span style="color:#f92672">/</span> num1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e">* only support four operators (+,-,*,/)
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">evalRPN</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> tokens<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Stack<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span> <span style="color:#f92672">&lt;</span> tokens<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">switch</span><span style="color:#f92672">(</span>tokens<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;+&#34;</span><span style="color:#f92672">:</span>
+                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>0<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">:</span>
+                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>1<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">:</span>
+                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>2<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">:</span>
+                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>3<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>tokens<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">return</span> numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+              </section>
+
+              <footer class="post-footer">
+                  <div class="post-tags">
+            
+                  </div>
+                
+              </footer>
+
+            
+                <aside class="post-comments">
+    
+    
+    
+</aside>
+
+            
+            </div>
+
+            <nav class="post-nav">
+                
+                
+                    <a class="post-nav-item post-nav-prev" href="https://htrekker.github.io/post/skiplit/">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">Skip List A Brief Introduction</h4>
+                            </span>
+                        </section>
+                    </a>
+                
+                <div class="clear"></div>
+            </nav>
+
+        </div>
+    </article>
+</main>
+
+                <div id="body-class" style="display: none;"></div>
+                <footer id="footer">
+                    <section class="credits">
+                        <span class="credits-license"><i class="fa fa-copyright"></i>2020 Pasilo
+                    </span>
+                    </section>
+                </footer>
+                
+
+                
+<div id="menu" data-target="menu">
+    <div class="menu-header">
+        <span class="menu-label">Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/">Pasilo的博客</a>
+        </li>
+        
+        
+        <li class="menu-list-item">
+            
+            <a class="home current js-ajax-link" href="/about">About me</a>
+        </li>
+        
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/" title="Entre Dev Y Ops en Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://github.com/" title="Entre Dev Y Ops en GitHub"><i class="fa fa-github"></i></a>
+        </li>
+    </div>
+
+</div>
+
+
+                
+                <div class="overlay"></div>
+            </div>
+        </section>
+
+    <script async src="https://htrekker.github.io//js/main.js"></script>
+
+
+
+  <noscript><link rel="stylesheet" href="https://htrekker.github.io//css/main.css"></noscript>
+</body>
+</html>
+
