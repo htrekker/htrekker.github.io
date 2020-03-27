@@ -129,25 +129,14 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <article class="post post">
 
 	<div class="inner">
-		<a class="post-link" href="https://htrekker.github.io/post/leetcode-records/"></a>
+		<a class="post-link" href="https://htrekker.github.io/post/leetcode%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"></a>
 		
 		<span class="post-meta">
 			<span class="post-date">25 Dec 2019</span>
 		</span>
-		<h2 class="post-title"><a href="https://htrekker.github.io/post/leetcode-records/">LeetCode 做题记录</a></h2>
-		<p class="post-excerpt">LeetCode做题记录 每日一题   面试题 10.01. 合并排序的数组
-原地算法逆向双指针做题记录：原地算法，双百，打卡记录
-  994. 腐烂的橘子
-多源BFS做题记录：BFS，做题记录2
-  1103. 分糖果 II
-等差数列做题记录：数学方法，做题记录3
-  面试题57 - II. 和为s的连续正数序列
-双指针滑动窗口List.toArray(T[] a)方法做题记录：双指针滑动窗口，打卡记录4
-  204. 计数质数
-素数打表欧拉筛选法做题记录：做题记录，筛选素数
-  常用算法 GCD(Stein算法) 相比于欧几里得算法，Stein算法减少了乘法计算的次数。仅通过位移和减法运算，能够使计算机更有效的完成计算。
-算法描述  判断输入的两数是否相等，或者任意一个为1。如果满足，则算法结束； 记输入的两数分别为$A_n$和$B_n$，此时分为以下三种情况：  若$A_n$, $B_n$同时为偶数，则两数同时除以2，并计算结果的最大公约数； 若$A_n$, $B_n$中有且仅有一个偶数，则将为偶数的数字除以2，并计算结果的最大公约数； 若$A_n$, $B_n$同时为奇数，则计算$A_{n+1} = B_n$和$B_{n+1} = \left|A_n - B_n \right|$的最大公约数。    实现 /* * An implementation of Stein algorithm */ public int gcd(int a, int b) { if(a == 0 || b == 0) return 0; if(a == b) return a; if((a &amp; 1) == 0 &amp;&amp; (b &amp; 1) == 0) return gcd(a &gt;&gt; 1, b &gt;&gt; 1) &lt;&lt; 1; if((b &amp; 1) == 0) return gcd(a, b &gt;&gt; 1); if((a &amp; 1) == 0) return gcd(a &gt;&gt; 1, b); return gcd(b, Math.</p>
-		<span class="post-more"><a href="https://htrekker.github.io/post/leetcode-records/">Read more <i class="fa fa-angle-right"></i></a></span>
+		<h2 class="post-title"><a href="https://htrekker.github.io/post/leetcode%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">LeetCode 做题记录</a></h2>
+		<p class="post-excerpt"><p>这是我的leetcode做题记录。主要用来记录做过的题和常用的算法。不定期更新&hellip;</p></p>
+		<span class="post-more"><a href="https://htrekker.github.io/post/leetcode%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">Read more <i class="fa fa-angle-right"></i></a></span>
 	</div>
 </article>
 
@@ -178,12 +167,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 			<span class="post-date">25 Dec 2019</span>
 		</span>
 		<h2 class="post-title"><a href="https://htrekker.github.io/post/skiplit/">Skip List A Brief Introduction</a></h2>
-		<p class="post-excerpt">跳表  Skip lists are a data structure that can be used in place of balanced trees. Skip lists use probabilistic balancing rather than strictly enforced balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees.
- 从链表到跳表 在具体介绍什么是跳表之前，我们可以先考虑一下链表。如果想要在链表中查询一个值是否存在，我们就需要从头到尾遍历一遍这个链表直到找到该值或者达到链表的末尾。显而易见，这种方式进行查询的时间复杂度为$O(n)$。那么，有什么办法可以加快搜索的速度呢？方法其实很简单就是加索引。
-增加索引 对于一个有序的数组，二分查找是一种非常高效的查询方式。其时间复杂度仅有$O(\log{n})$，这相比于顺序查询快了很多。如果我们把二分查找的搜索路径画出来，我们就会得到一种叫做平衡搜索树的东西（见下图）。
-此时，我们将左节点画平，右节点画直。这种数据结构就是跳表：
-A Pretty Naive Implementation 这个实现主要参考了作者的原论文1和@somenzz的博客2在这里先表示感谢！代码请见：https://github.com/htrekker/skiplist
-数据结构的设计 class SkiplistNode {int value;SkiplistNode[] next;// 使用链式的存储方式不仅效率低下而且非常浪费空间public SkiplistNode(int level, int value) {next = new SkiplistNode[level];this.</p>
+		<p class="post-excerpt"><p>听说跳表很厉害，那么&hellip;一起来学学跳表吧！</p></p>
 		<span class="post-more"><a href="https://htrekker.github.io/post/skiplit/">Read more <i class="fa fa-angle-right"></i></a></span>
 	</div>
 </article>

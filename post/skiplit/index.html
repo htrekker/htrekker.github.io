@@ -21,12 +21,7 @@
     <meta name="twitter:creator" content="@" />
     <meta name="twitter:title" content="Skip List A Brief Introduction" />
     
-    <meta name="twitter:description" content="跳表  Skip lists are a data structure that can be used in place of balanced trees. Skip lists use probabilistic balancing rather than strictly enforced balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees.
- 从链表到跳表 在具体介绍什么是跳表之前，我们可以先考虑一下链表。如果想要在链表中查询一个值是否存在，我们就需要从头到尾遍历一遍这个链表直到找到该值或者达到链表的末尾。显而易见，这种方式进行查询的时间复杂度为$O(n)$。那么，有什么办法可以加快搜索的速度呢？方法其实很简单就是加索引。
-增加索引 对于一个有序的数组，二分查找是一种非常高效的查询方式。其时间复杂度仅有$O(\log{n})$，这相比于顺序查询快了很多。如果我们把二分查找的搜索路径画出来，我们就会得到一种叫做平衡搜索树的东西（见下图）。
-此时，我们将左节点画平，右节点画直。这种数据结构就是跳表：
-A Pretty Naive Implementation 这个实现主要参考了作者的原论文1和@somenzz的博客2在这里先表示感谢！代码请见：https://github.com/htrekker/skiplist
-数据结构的设计 class SkiplistNode {int value;SkiplistNode[] next;// 使用链式的存储方式不仅效率低下而且非常浪费空间public SkiplistNode(int level, int value) {next = new SkiplistNode[level];this." />
+    <meta name="twitter:description" content="听说跳表很厉害，那么&hellip;一起来学学跳表吧！" />
     <meta name="twitter:url" content="https://htrekker.github.io/post/skiplit/" />
     
 
@@ -183,18 +178,18 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
               <section class="post-content">
                 
-                  <h1 id="heading">跳表</h1>
+                  <p>听说跳表很厉害，那么&hellip;一起来学学跳表吧！</p>
 <blockquote>
 <p>Skip lists are a data structure that can be used in place of balanced trees. Skip lists use <strong>probabilistic balancing</strong> rather than strictly enforced balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees.</p>
 </blockquote>
-<h2 id="heading-1">从链表到跳表</h2>
+<h2 id="heading">从链表到跳表</h2>
 <p>在具体介绍什么是跳表之前，我们可以先考虑一下链表。如果想要在链表中查询一个值是否存在，我们就需要从头到尾遍历一遍这个链表直到找到该值或者达到链表的末尾。显而易见，这种方式进行查询的时间复杂度为$O(n)$。那么，有什么办法可以加快搜索的速度呢？方法其实很简单就是<strong>加索引</strong>。</p>
-<h3 id="heading-2">增加索引</h3>
+<h3 id="heading-1">增加索引</h3>
 <p>对于一个有序的数组，<strong>二分查找</strong>是一种非常高效的查询方式。其时间复杂度仅有$O(\log{n})$，这相比于顺序查询快了很多。如果我们把二分查找的搜索路径画出来，我们就会得到一种叫做<strong>平衡搜索树</strong>的东西（见下图）。</p>
 <p>此时，我们将左节点画平，右节点画直。这种数据结构就是跳表：</p>
 <h2 id="a-pretty-naive-implementation">A Pretty Naive Implementation</h2>
 <p>这个实现主要参考了作者的原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>和<!-- raw HTML omitted -->@somenzz的博客<!-- raw HTML omitted --><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>在这里先表示感谢！代码请见：<a href="https://github.com/htrekker/skiplist">https://github.com/htrekker/skiplist</a></p>
-<h3 id="heading-3">数据结构的设计</h3>
+<h3 id="heading-2">数据结构的设计</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SkiplistNode</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">int</span> value<span style="color:#f92672">;</span>
     SkiplistNode<span style="color:#f92672">[</span><span style="color:#f92672">]</span> next<span style="color:#f92672">;</span><span style="color:#75715e">// 使用链式的存储方式不仅效率低下而且非常浪费空间
@@ -227,7 +222,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
     <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
 
 <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="heading-4">搜索操作</h3>
+</code></pre></div><h3 id="heading-3">搜索操作</h3>
 <p>搜索主要包括两个操作：一个是在某一层索引水平移动，另一个是在某个节点向下层索引移动。操作一的类似于顺序检索一个单链表，操作二类似于顺序检索一个数组。算法的描述如下：</p>
 <ul>
 <li>从当前最高的索引层开始搜索：
@@ -252,7 +247,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="heading-5">插入操作</h3>
+</code></pre></div><h3 id="heading-4">插入操作</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findPath</span><span style="color:#f92672">(</span>SkiplistNode<span style="color:#f92672">[</span><span style="color:#f92672">]</span> path<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> num<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> level<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     SkiplistNode cur <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
     <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>level<span style="color:#f92672">,</span> currentMaxLevel<span style="color:#f92672">)</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -279,7 +274,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
     <span style="color:#f92672">}</span>
     <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">currentMaxLevel</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>currentMaxLevel<span style="color:#f92672">,</span> level<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="heading-6">删除操作</h3>
+</code></pre></div><h3 id="heading-5">删除操作</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">erase</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     SkiplistNode update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkiplistNode<span style="color:#f92672">[</span>currentMaxLevel<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
     findPath<span style="color:#f92672">(</span>update<span style="color:#f92672">,</span> num<span style="color:#f92672">,</span> 0<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
@@ -296,7 +291,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h3 id="heading-7">获取一个区间内的数</h3>
+</code></pre></div><h3 id="heading-6">获取一个区间内的数</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findRange</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> begin<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 
@@ -360,7 +355,6 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 </li>
 </ol>
 </section>
-
               </section>
 
               <footer class="post-footer">
@@ -382,7 +376,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
             <nav class="post-nav">
                 
-                    <a class="post-nav-item post-nav-next" href="https://htrekker.github.io/post/leetcode-records/">
+                    <a class="post-nav-item post-nav-next" href="https://htrekker.github.io/post/leetcode%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">
                         <section class="post-nav-teaser">
                             <span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
                             <span class="post-nav-info">
