@@ -101,7 +101,7 @@
         },
         "datePublished": "2019-12-25",
         "dateModified": "2019-12-25",
-        "wordCount":  363 ,
+        "wordCount":  527 ,
         
     }
     </script>
@@ -169,7 +169,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">2 min.</span> (<span class="word-count">363</span> words)</span></span>
+                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">3 min.</span> (<span class="word-count">527</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
@@ -222,29 +222,29 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 </li>
 </ol>
 <h4 id="heading-3">实现</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/*
-</span><span style="color:#75715e">* An implementation of Stein algorithm
-</span><span style="color:#75715e">*/</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gcd</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>a <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0 <span style="color:#f92672">|</span><span style="color:#f92672">|</span> b <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>a <span style="color:#f92672">=</span><span style="color:#f92672">=</span> b<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> a<span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#93a1a1;font-style:italic">/*
+</span><span style="color:#93a1a1;font-style:italic">* An implementation of Stein algorithm
+</span><span style="color:#93a1a1;font-style:italic">*/</span>
+<span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">gcd</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">a</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">b</span>) {
+    <span style="color:#859900">if</span>(<span style="color:#268bd2">a</span> == <span style="color:#268bd2">0</span> || <span style="color:#268bd2">b</span> == <span style="color:#268bd2">0</span>) <span style="color:#859900">return</span> <span style="color:#268bd2">0</span>;
+    <span style="color:#859900">if</span>(<span style="color:#268bd2">a</span> == <span style="color:#268bd2">b</span>) <span style="color:#859900">return</span> <span style="color:#268bd2">a</span>;
     
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span>a <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0 <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#f92672">(</span>b <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
-        <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">,</span> b <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span>b <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
-        <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#f92672">(</span>a <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
-        <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">,</span> b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#859900">if</span>((<span style="color:#268bd2">a</span> &amp; <span style="color:#268bd2">1</span>) == <span style="color:#268bd2">0</span> &amp;&amp; (<span style="color:#268bd2">b</span> &amp; <span style="color:#268bd2">1</span>) == <span style="color:#268bd2">0</span>)
+        <span style="color:#859900">return</span> <span style="color:#268bd2">gcd</span>(<span style="color:#268bd2">a</span> &gt;&gt; <span style="color:#268bd2">1</span>, <span style="color:#268bd2">b</span> &gt;&gt; <span style="color:#268bd2">1</span>) &lt;&lt; <span style="color:#268bd2">1</span>;
+    <span style="color:#859900">if</span>((<span style="color:#268bd2">b</span> &amp; <span style="color:#268bd2">1</span>) == <span style="color:#268bd2">0</span>)
+        <span style="color:#859900">return</span> <span style="color:#268bd2">gcd</span>(<span style="color:#268bd2">a</span>, <span style="color:#268bd2">b</span> &gt;&gt; <span style="color:#268bd2">1</span>);
+    <span style="color:#859900">if</span>((<span style="color:#268bd2">a</span> &amp; <span style="color:#268bd2">1</span>) == <span style="color:#268bd2">0</span>)
+        <span style="color:#859900">return</span> <span style="color:#268bd2">gcd</span>(<span style="color:#268bd2">a</span> &gt;&gt; <span style="color:#268bd2">1</span>, <span style="color:#268bd2">b</span>);
         
-    <span style="color:#66d9ef">return</span> gcd<span style="color:#f92672">(</span>b<span style="color:#f92672">,</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>a<span style="color:#f92672">-</span>b<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+    <span style="color:#859900">return</span> <span style="color:#268bd2">gcd</span>(<span style="color:#268bd2">b</span>, <span style="color:#268bd2">Math</span>.<span style="color:#268bd2">abs</span>(<span style="color:#268bd2">a</span>-<span style="color:#268bd2">b</span>));
+}
 </code></pre></div><p>通过最大公约数，我们还可以求出两个数的最小公倍数。记两个数$a$和$b$，两个数的最小公倍数为：
 $$
 \mathrm{lcm}(a, b) = \frac{a \times b}{\mathrm{gcd}(a, b)}
 $$</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lcm</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b <span style="color:#f92672">/</span> gcd<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span>b<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">lcm</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">a</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">b</span>) {
+    <span style="color:#859900">return</span> <span style="color:#268bd2">a</span> * <span style="color:#268bd2">b</span> / <span style="color:#268bd2">gcd</span>(<span style="color:#268bd2">a</span>,<span style="color:#268bd2">b</span>);
+}
 </code></pre></div><h3 id="heading-4">链表是否有环问题(快慢指针)</h3>
 <h4 id="heading-5">算法</h4>
 <ol>
@@ -257,34 +257,34 @@ $$</p>
 </li>
 </ol>
 <h4 id="heading-6">实现</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasCycle</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-    ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">,</span> slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">boolean</span> <span style="color:#268bd2">hasCycle</span>(<span style="color:#268bd2">ListNode</span> <span style="color:#268bd2">head</span>) {
+    <span style="color:#859900">if</span>(<span style="color:#268bd2">head</span> == <span style="color:#859900;font-weight:bold">null</span>) <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">true</span>;
+    <span style="color:#268bd2">ListNode</span> <span style="color:#268bd2">fast</span> = <span style="color:#268bd2">head</span>, <span style="color:#268bd2">slow</span> = <span style="color:#268bd2">head</span>;
     
-    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>fast <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
-        slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fast <span style="color:#f92672">=</span><span style="color:#f92672">=</span> slow<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#859900">while</span>(<span style="color:#268bd2">fast</span> != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">fast</span>.<span style="color:#268bd2">next</span> != <span style="color:#859900;font-weight:bold">null</span>) {
+        <span style="color:#268bd2">fast</span> = <span style="color:#268bd2">fast</span>.<span style="color:#268bd2">next</span>.<span style="color:#268bd2">next</span>;
+        <span style="color:#268bd2">slow</span> = <span style="color:#268bd2">slow</span>.<span style="color:#268bd2">next</span>;
+        <span style="color:#859900">if</span>(<span style="color:#268bd2">fast</span> == <span style="color:#268bd2">slow</span>) <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">true</span>;
+    }
     
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+    <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">false</span>;
+}
 </code></pre></div><p>这个问题更进一步可以要求我们找出环状链表和单链表的交点。方法如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">hasCycle</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-   	<span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
-    ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">,</span> slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">boolean</span> <span style="color:#268bd2">hasCycle</span>(<span style="color:#268bd2">ListNode</span> <span style="color:#268bd2">head</span>) {
+   	...
+    <span style="color:#268bd2">ListNode</span> <span style="color:#268bd2">fast</span> = <span style="color:#268bd2">head</span>, <span style="color:#268bd2">slow</span> = <span style="color:#268bd2">head</span>;
     
-    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+    ...
         
-    ListNode ptr <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>ptr <span style="color:#f92672">!</span><span style="color:#f92672">=</span> slow<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
-        slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#75715e">// 此时ptr指向的是交叉节点
-</span><span style="color:#75715e"></span>    
-    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
-<span style="color:#f92672">}</span>
+    <span style="color:#268bd2">ListNode</span> <span style="color:#268bd2">ptr</span> = <span style="color:#268bd2">head</span>;
+    <span style="color:#859900">while</span>(<span style="color:#268bd2">ptr</span> != <span style="color:#268bd2">slow</span>) {
+        <span style="color:#268bd2">ptr</span> = <span style="color:#268bd2">ptr</span>.<span style="color:#268bd2">next</span>;
+        <span style="color:#268bd2">slow</span> = <span style="color:#268bd2">slow</span>.<span style="color:#268bd2">next</span>;
+    }
+    <span style="color:#93a1a1;font-style:italic">// 此时ptr指向的是交叉节点
+</span><span style="color:#93a1a1;font-style:italic"></span>    
+    ...
+}
 </code></pre></div><p>这种方法的原理是：假设单链表长度为$n$，环状链表长度为$m$。如果此时慢指针移动了$k$次。那么，快指针一定移动了$2k$次。必有$2k = k + c \cdot m$。假设在圈内一共移动了$k^{'}$次，则$k^{'} = c \cdot m - n$。故<code>ptr</code>向前移动$n$次时，慢指针又在圈内移动了$n$次。所以，$k^{'} = c \cdot m - n + n = c \cdot m$。故此时<code>ptr</code>和慢指针均处于环装链表的”入口“，即所需要求的交点。</p>
 <h3 id="-shunting-yard-algorithm">调度厂算法 (Shunting Yard Algorithm)</h3>
 <p>调度厂算法 (Shunting Yard Algorithm) 是由Dijkstra提出的将<code>中缀表达式</code>转化为<code>后缀表达式</code>的常用算法。</p>
@@ -304,50 +304,95 @@ $$</p>
 </li>
 <li>重复上述操作直到到达后缀表达式的末尾，此时栈顶元素为该表达式的运算结果</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">cal</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num1<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> num2<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> operator<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">switch</span><span style="color:#f92672">(</span>operator<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">case</span> 0<span style="color:#f92672">:</span>
-            <span style="color:#66d9ef">return</span> num1 <span style="color:#f92672">+</span> num2<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">case</span> 1<span style="color:#f92672">:</span>
-            <span style="color:#66d9ef">return</span> num2 <span style="color:#f92672">-</span> num1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">case</span> 2<span style="color:#f92672">:</span>
-            <span style="color:#66d9ef">return</span> num1 <span style="color:#f92672">*</span> num2<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">case</span> 3<span style="color:#f92672">:</span>
-            <span style="color:#66d9ef">return</span> num2 <span style="color:#f92672">/</span> num1<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">cal</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">num1</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">num2</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">operator</span>) {
+    <span style="color:#859900">switch</span>(<span style="color:#268bd2">operator</span>) {
+        <span style="color:#859900">case</span> <span style="color:#268bd2">0</span>:
+            <span style="color:#859900">return</span> <span style="color:#268bd2">num1</span> + <span style="color:#268bd2">num2</span>;
+        <span style="color:#859900">case</span> <span style="color:#268bd2">1</span>:
+            <span style="color:#859900">return</span> <span style="color:#268bd2">num2</span> - <span style="color:#268bd2">num1</span>;
+        <span style="color:#859900">case</span> <span style="color:#268bd2">2</span>:
+            <span style="color:#859900">return</span> <span style="color:#268bd2">num1</span> * <span style="color:#268bd2">num2</span>;
+        <span style="color:#859900">case</span> <span style="color:#268bd2">3</span>:
+            <span style="color:#859900">return</span> <span style="color:#268bd2">num2</span> / <span style="color:#268bd2">num1</span>;
+    }
 
-    <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+    <span style="color:#859900">return</span> <span style="color:#268bd2">0</span>;
+}
 
-<span style="color:#75715e">/**
-</span><span style="color:#75715e">* only support four operators (+,-,*,/)
-</span><span style="color:#75715e">*/</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">evalRPN</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[</span><span style="color:#f92672">]</span> tokens<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    Stack<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span> <span style="color:#f92672">&lt;</span> tokens<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">switch</span><span style="color:#f92672">(</span>tokens<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;+&#34;</span><span style="color:#f92672">:</span>
-                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>0<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">:</span>
-                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>1<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">:</span>
-                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>2<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">:</span>
-                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>cal<span style="color:#f92672">(</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>3<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
-                numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>tokens<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
+<span style="color:#93a1a1;font-style:italic">/**
+</span><span style="color:#93a1a1;font-style:italic">* only support four operators (+,-,*,/)
+</span><span style="color:#93a1a1;font-style:italic">*/</span>
+<span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">evalRPN</span>(<span style="color:#268bd2">String</span>[] <span style="color:#268bd2">tokens</span>) {
+    <span style="color:#268bd2">Stack</span>&lt;<span style="color:#268bd2">Integer</span>&gt; <span style="color:#268bd2">numbers</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">Stack</span>&lt;&gt;();
+    <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = -<span style="color:#268bd2">1</span>;
+    <span style="color:#859900">while</span>(<span style="color:#268bd2">i</span>++ &lt; <span style="color:#268bd2">tokens</span>.<span style="color:#268bd2">length</span> - <span style="color:#268bd2">1</span>) {
+        <span style="color:#859900">switch</span>(<span style="color:#268bd2">tokens</span>[<span style="color:#268bd2">i</span>]) {
+            <span style="color:#859900">case</span> <span style="color:#2aa198">&#34;+&#34;</span>:
+                <span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">push</span>(<span style="color:#268bd2">cal</span>(<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">0</span>));
+                <span style="color:#859900">break</span>;
+            <span style="color:#859900">case</span> <span style="color:#2aa198">&#34;-&#34;</span>:
+                <span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">push</span>(<span style="color:#268bd2">cal</span>(<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">1</span>));
+                <span style="color:#859900">break</span>;
+            <span style="color:#859900">case</span> <span style="color:#2aa198">&#34;*&#34;</span>:
+                <span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">push</span>(<span style="color:#268bd2">cal</span>(<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">2</span>));
+                <span style="color:#859900">break</span>;
+            <span style="color:#859900">case</span> <span style="color:#2aa198">&#34;/&#34;</span>:
+                <span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">push</span>(<span style="color:#268bd2">cal</span>(<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>(),<span style="color:#268bd2">3</span>));
+                <span style="color:#859900">break</span>;
+            <span style="color:#859900">default</span>:
+                <span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">push</span>(<span style="color:#268bd2">Integer</span>.<span style="color:#268bd2">valueOf</span>(<span style="color:#268bd2">tokens</span>[<span style="color:#268bd2">i</span>]));
+                <span style="color:#859900">break</span>;
+        }
+	}
 
-    <span style="color:#66d9ef">return</span> numbers<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
-</code></pre></div>
+    <span style="color:#859900">return</span> <span style="color:#268bd2">numbers</span>.<span style="color:#268bd2">pop</span>();
+}
+</code></pre></div><h2 id="heading-8">素数筛选</h2>
+<h3 id="heading-9">埃氏筛</h3>
+<p><img src="https://pic.leetcode-cn.com/23d348bef930ca4bb73f749500f664ccffc5e41467aac0ba9787025392ca207b-1.gif" alt="sieve-of-Eratosthenes-in-motion"></p>
+<p>上图是埃式筛选法的动态图片解析。算法的原理是通过已知道的素数标记未知的合数，通过标记合数来最终筛选出所有的素数。</p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">countPrimes_a</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">n</span>) {
+    <span style="color:#859900">if</span>(<span style="color:#268bd2">n</span> &lt;= <span style="color:#268bd2">2</span>) <span style="color:#859900">return</span> <span style="color:#268bd2">0</span>;
+
+    <span style="color:#859900;font-weight:bold">boolean</span>[] <span style="color:#268bd2">composites</span> = <span style="color:#859900">new</span> <span style="color:#859900;font-weight:bold">boolean</span>[<span style="color:#268bd2">n</span>];<span style="color:#93a1a1;font-style:italic">// 用于标记小于n的合数
+</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">n</span> - <span style="color:#268bd2">2</span>;
+    <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">2</span>; <span style="color:#268bd2">i</span> &lt;= (<span style="color:#859900;font-weight:bold">int</span>) <span style="color:#268bd2">Math</span>.<span style="color:#268bd2">sqrt</span>(<span style="color:#268bd2">n</span>); <span style="color:#268bd2">i</span>++) {
+        <span style="color:#859900">if</span>(<span style="color:#268bd2">composites</span>[<span style="color:#268bd2">i</span>]) <span style="color:#859900">continue</span>;<span style="color:#93a1a1;font-style:italic">// 如果已经被标记，则跳过筛选
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">j</span> = <span style="color:#268bd2">i</span> * <span style="color:#268bd2">i</span>; <span style="color:#268bd2">j</span> &lt; <span style="color:#268bd2">n</span>; <span style="color:#268bd2">j</span> += <span style="color:#268bd2">i</span>) {<span style="color:#93a1a1;font-style:italic">// i的j倍一定是合数
+</span><span style="color:#93a1a1;font-style:italic"></span>            <span style="color:#859900">if</span>(!<span style="color:#268bd2">composites</span>[<span style="color:#268bd2">j</span>]) <span style="color:#268bd2">count</span>--;
+            <span style="color:#268bd2">composites</span>[<span style="color:#268bd2">j</span>] = <span style="color:#859900;font-weight:bold">true</span>;
+        }
+    }
+
+    <span style="color:#859900">return</span> <span style="color:#268bd2">count</span>;
+}
+</code></pre></div><h4 id="optimization">Optimization</h4>
+<p>优化的原理很简单。因为偶数永远不可能是素数，所以在筛选合数时跳过偶数的话可以大幅度提高运行的速度。</p>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">countPrimes</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">n</span>) {
+     <span style="color:#859900">if</span>(<span style="color:#268bd2">n</span> &lt;= <span style="color:#268bd2">2</span>) <span style="color:#859900">return</span> <span style="color:#268bd2">0</span>;
+
+     <span style="color:#93a1a1;font-style:italic">/*
+</span><span style="color:#93a1a1;font-style:italic">      * 以下的代码目的是筛选出n大于等于3时非偶数的合数
+</span><span style="color:#93a1a1;font-style:italic">      */</span>
+     <span style="color:#859900;font-weight:bold">boolean</span>[] <span style="color:#268bd2">composites</span> = <span style="color:#859900">new</span> <span style="color:#859900;font-weight:bold">boolean</span>[<span style="color:#268bd2">n</span>];<span style="color:#93a1a1;font-style:italic">// 用于标记小于n的合数
+</span><span style="color:#93a1a1;font-style:italic"></span>     <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">n</span> - <span style="color:#268bd2">3</span>;<span style="color:#93a1a1;font-style:italic">// [3, n)区间内有n-3个数
+</span><span style="color:#93a1a1;font-style:italic"></span>     <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">limit</span> = (<span style="color:#859900;font-weight:bold">int</span>) <span style="color:#268bd2">Math</span>.<span style="color:#268bd2">sqrt</span>(<span style="color:#268bd2">n</span>);
+     <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">3</span>; <span style="color:#268bd2">i</span> &lt;= <span style="color:#268bd2">limit</span>; <span style="color:#268bd2">i</span> += <span style="color:#268bd2">2</span>) {<span style="color:#93a1a1;font-style:italic">// 设置步长为2，跳过偶数
+</span><span style="color:#93a1a1;font-style:italic"></span>         <span style="color:#859900">if</span>(<span style="color:#268bd2">composites</span>[<span style="color:#268bd2">i</span>]) <span style="color:#859900">continue</span>;<span style="color:#93a1a1;font-style:italic">// 如果已经被标记，则跳过筛选
+</span><span style="color:#93a1a1;font-style:italic"></span>         <span style="color:#93a1a1;font-style:italic">/*
+</span><span style="color:#93a1a1;font-style:italic">          * 这里步长设成了i的两倍，这是由于i是素数（一定是奇数），如果i再加上奇数倍的i一定是偶数。
+</span><span style="color:#93a1a1;font-style:italic">          * 所以，可以直接将步长设置成两倍跳过偶数。
+</span><span style="color:#93a1a1;font-style:italic">          */</span>
+         <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">step</span> = <span style="color:#268bd2">i</span> &lt;&lt; <span style="color:#268bd2">1</span>;
+         <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">j</span> = <span style="color:#268bd2">i</span> * <span style="color:#268bd2">i</span>; <span style="color:#268bd2">j</span> &lt; <span style="color:#268bd2">n</span>; <span style="color:#268bd2">j</span> += <span style="color:#268bd2">step</span>) {<span style="color:#93a1a1;font-style:italic">// 从i的2次幂开始
+</span><span style="color:#93a1a1;font-style:italic"></span>             <span style="color:#859900">if</span>(!<span style="color:#268bd2">composites</span>[<span style="color:#268bd2">j</span>]) <span style="color:#268bd2">count</span>--;
+             <span style="color:#268bd2">composites</span>[<span style="color:#268bd2">j</span>] = <span style="color:#859900;font-weight:bold">true</span>;
+         }
+     }
+	 <span style="color:#93a1a1;font-style:italic">// 最后需要减去[3, n)之间的所有偶数（n-3&gt;&gt;1个)，并加上1（因为2是素数）
+</span><span style="color:#93a1a1;font-style:italic"></span>     <span style="color:#859900">return</span> <span style="color:#268bd2">count</span> - (<span style="color:#268bd2">n</span> - <span style="color:#268bd2">3</span> &gt;&gt; <span style="color:#268bd2">1</span>) + <span style="color:#268bd2">1</span>;
+}
+</code></pre></div><h3 id="heading-10">欧拉线性筛</h3>
               </section>
 
               <footer class="post-footer">
@@ -431,6 +476,34 @@ $$</p>
         </section>
 
     <script async src="https://htrekker.github.io//js/main.js"></script>
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
 
 
 

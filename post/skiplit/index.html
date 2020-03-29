@@ -101,7 +101,7 @@
         },
         "datePublished": "2019-12-25",
         "dateModified": "2019-12-25",
-        "wordCount":  539 ,
+        "wordCount":  540 ,
         
     }
     </script>
@@ -169,7 +169,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">3 min.</span> (<span class="word-count">539</span> words)</span></span>
+                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">3 min.</span> (<span class="word-count">540</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
@@ -190,38 +190,38 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <h2 id="a-pretty-naive-implementation">A Pretty Naive Implementation</h2>
 <p>这个实现主要参考了作者的原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>和<!-- raw HTML omitted -->@somenzz的博客<!-- raw HTML omitted --><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>在这里先表示感谢！代码请见：<a href="https://github.com/htrekker/skiplist">https://github.com/htrekker/skiplist</a></p>
 <h3 id="heading-2">数据结构的设计</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SkiplistNode</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">int</span> value<span style="color:#f92672">;</span>
-    SkiplistNode<span style="color:#f92672">[</span><span style="color:#f92672">]</span> next<span style="color:#f92672">;</span><span style="color:#75715e">// 使用链式的存储方式不仅效率低下而且非常浪费空间
-</span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SkiplistNode</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> level<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        next <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkiplistNode<span style="color:#f92672">[</span>level<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">class</span> <span style="color:#cb4b16">SkiplistNode</span> {
+    <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">value</span>;
+    <span style="color:#268bd2">SkiplistNode</span>[] <span style="color:#268bd2">next</span>;<span style="color:#93a1a1;font-style:italic">// 使用链式的存储方式不仅效率低下而且非常浪费空间
+</span><span style="color:#93a1a1;font-style:italic"></span>
+    <span style="color:#859900">public</span> <span style="color:#268bd2">SkiplistNode</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">level</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">value</span>) {
+        <span style="color:#268bd2">next</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">SkiplistNode</span>[<span style="color:#268bd2">level</span>];
+        <span style="color:#859900">this</span>.<span style="color:#268bd2">value</span> = <span style="color:#268bd2">value</span>;
+    }
 	
-   <span style="color:#75715e">/**
-</span><span style="color:#75715e">    * 返回这个node的高度
-</span><span style="color:#75715e">    */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">level</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">return</span> next<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Skiplist</span> <span style="color:#f92672">{</span>
+   <span style="color:#93a1a1;font-style:italic">/**
+</span><span style="color:#93a1a1;font-style:italic">    * 返回这个node的高度
+</span><span style="color:#93a1a1;font-style:italic">    */</span>
+    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">level</span>() {
+        <span style="color:#859900">return</span> <span style="color:#268bd2">next</span>.<span style="color:#268bd2">length</span>;
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">class</span> <span style="color:#cb4b16">Skiplist</span> {
 
-    <span style="color:#66d9ef">private</span> SkiplistNode root<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> MAX_LEVEL <span style="color:#f92672">=</span> 32<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> currentMaxLevel <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#859900">private</span> <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">root</span>;
+    <span style="color:#859900">private</span> <span style="color:#859900">static</span> <span style="color:#859900">final</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">MAX_LEVEL</span> = <span style="color:#268bd2">32</span>;
+    <span style="color:#859900">private</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">currentMaxLevel</span> = <span style="color:#268bd2">0</span>;
 
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> levels <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>MAX_LEVEL <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span>[] <span style="color:#268bd2">levels</span> = <span style="color:#859900">new</span> <span style="color:#859900;font-weight:bold">int</span>[<span style="color:#268bd2">MAX_LEVEL</span> + <span style="color:#268bd2">1</span>];
+    <span style="color:#859900">private</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">size</span> = <span style="color:#268bd2">0</span>;
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Skiplist</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkiplistNode<span style="color:#f92672">(</span>32<span style="color:#f92672">,</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#859900">public</span> <span style="color:#268bd2">Skiplist</span>() {
+        <span style="color:#268bd2">root</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">SkiplistNode</span>(<span style="color:#268bd2">32</span>, -<span style="color:#268bd2">1</span>);
+    }
  
-    <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+    ...
 
-<span style="color:#f92672">}</span>
+}
 </code></pre></div><h3 id="heading-3">搜索操作</h3>
 <p>搜索主要包括两个操作：一个是在某一层索引水平移动，另一个是在某个节点向下层索引移动。操作一的类似于顺序检索一个单链表，操作二类似于顺序检索一个数组。算法的描述如下：</p>
 <ul>
@@ -234,83 +234,83 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 </li>
 <li>如果到达第0层索引且未找到目标值，则返回未找到目标值。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    SkiplistNode cur <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> currentMaxLevel <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#75715e">// move along the level
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">&lt;</span> target<span style="color:#f92672">)</span>
-            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-        <span style="color:#75715e">// if target is found, stop search
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> target<span style="color:#f92672">)</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-        <span style="color:#75715e">// move down the node
-</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">boolean</span> <span style="color:#268bd2">search</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">target</span>) {
+    <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">root</span>;
+    <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">currentMaxLevel</span> - <span style="color:#268bd2">1</span>; <span style="color:#268bd2">i</span> &gt;= <span style="color:#268bd2">0</span>; <span style="color:#268bd2">i</span>--) {
+        <span style="color:#93a1a1;font-style:italic">// move along the level
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#859900">while</span> (<span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">value</span> &lt; <span style="color:#268bd2">target</span>)
+            <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>];
+        <span style="color:#93a1a1;font-style:italic">// if target is found, stop search
+</span><span style="color:#93a1a1;font-style:italic"></span>        <span style="color:#859900">if</span> (<span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">value</span> == <span style="color:#268bd2">target</span>)
+            <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">true</span>;
+        <span style="color:#93a1a1;font-style:italic">// move down the node
+</span><span style="color:#93a1a1;font-style:italic"></span>    }
+    <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">false</span>;
+}
 </code></pre></div><h3 id="heading-4">插入操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findPath</span><span style="color:#f92672">(</span>SkiplistNode<span style="color:#f92672">[</span><span style="color:#f92672">]</span> path<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> num<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> level<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    SkiplistNode cur <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>level<span style="color:#f92672">,</span> currentMaxLevel<span style="color:#f92672">)</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">&lt;</span> num<span style="color:#f92672">)</span>
-            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-        path<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> cur<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">=</span><span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">)</span>
-        <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">int</span> level <span style="color:#f92672">=</span> SkiplistHelper<span style="color:#f92672">.</span><span style="color:#a6e22e">getLevel</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    SkiplistNode<span style="color:#f92672">[</span><span style="color:#f92672">]</span> update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkiplistNode<span style="color:#f92672">[</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>level<span style="color:#f92672">,</span> currentMaxLevel<span style="color:#f92672">)</span><span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-    levels<span style="color:#f92672">[</span>level<span style="color:#f92672">]</span><span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">;</span>
-    size<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">;</span>
-    findPath<span style="color:#f92672">(</span>update<span style="color:#f92672">,</span> num<span style="color:#f92672">,</span> level<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#75715e">/*
-</span><span style="color:#75715e">     * insert
-</span><span style="color:#75715e">     */</span>
-    SkiplistNode newNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkiplistNode<span style="color:#f92672">(</span>level<span style="color:#f92672">,</span> num<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> level<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        newNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> update<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-        path<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> newNode<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">currentMaxLevel</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>currentMaxLevel<span style="color:#f92672">,</span> level<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">findPath</span>(<span style="color:#268bd2">SkiplistNode</span>[] <span style="color:#268bd2">path</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">num</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">level</span>) {
+    <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">root</span>;
+    <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">Math</span>.<span style="color:#268bd2">max</span>(<span style="color:#268bd2">level</span>, <span style="color:#268bd2">currentMaxLevel</span>) - <span style="color:#268bd2">1</span>; <span style="color:#268bd2">i</span> &gt;= <span style="color:#268bd2">0</span>; <span style="color:#268bd2">i</span>--) {
+        <span style="color:#859900">while</span> (<span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">value</span> &lt; <span style="color:#268bd2">num</span>)
+            <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>];
+        <span style="color:#268bd2">path</span>[<span style="color:#268bd2">i</span>] = <span style="color:#268bd2">cur</span>;
+    }
+}
+</code></pre></div><div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">void</span> <span style="color:#268bd2">add</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">num</span>) {
+    <span style="color:#859900">if</span> (<span style="color:#268bd2">num</span> == <span style="color:#268bd2">root</span>.<span style="color:#268bd2">value</span>)
+        <span style="color:#859900">return</span>;
+    <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">level</span> = <span style="color:#268bd2">SkiplistHelper</span>.<span style="color:#268bd2">getLevel</span>();
+    <span style="color:#268bd2">SkiplistNode</span>[] <span style="color:#268bd2">update</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">SkiplistNode</span>[<span style="color:#268bd2">Math</span>.<span style="color:#268bd2">max</span>(<span style="color:#268bd2">level</span>, <span style="color:#268bd2">currentMaxLevel</span>)];
+    <span style="color:#268bd2">levels</span>[<span style="color:#268bd2">level</span>]++;
+    <span style="color:#268bd2">size</span>++;
+    <span style="color:#268bd2">findPath</span>(<span style="color:#268bd2">update</span>, <span style="color:#268bd2">num</span>, <span style="color:#268bd2">level</span>);
+    <span style="color:#93a1a1;font-style:italic">/*
+</span><span style="color:#93a1a1;font-style:italic">     * insert
+</span><span style="color:#93a1a1;font-style:italic">     */</span>
+    <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">newNode</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">SkiplistNode</span>(<span style="color:#268bd2">level</span>, <span style="color:#268bd2">num</span>);
+    <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">0</span>; <span style="color:#268bd2">i</span> &lt; <span style="color:#268bd2">level</span>; <span style="color:#268bd2">i</span>++) {
+        <span style="color:#268bd2">newNode</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] = <span style="color:#268bd2">update</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>];
+        <span style="color:#268bd2">path</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] = <span style="color:#268bd2">newNode</span>;
+    }
+    <span style="color:#859900">this</span>.<span style="color:#268bd2">currentMaxLevel</span> = <span style="color:#268bd2">Math</span>.<span style="color:#268bd2">max</span>(<span style="color:#268bd2">currentMaxLevel</span>, <span style="color:#268bd2">level</span>);
+}
 </code></pre></div><h3 id="heading-5">删除操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">erase</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    SkiplistNode update <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SkiplistNode<span style="color:#f92672">[</span>currentMaxLevel<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-    findPath<span style="color:#f92672">(</span>update<span style="color:#f92672">,</span> num<span style="color:#f92672">,</span> 0<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">boolean</span> <span style="color:#268bd2">erase</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">num</span>) {
+    <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">update</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">SkiplistNode</span>[<span style="color:#268bd2">currentMaxLevel</span>];
+    <span style="color:#268bd2">findPath</span>(<span style="color:#268bd2">update</span>, <span style="color:#268bd2">num</span>, <span style="color:#268bd2">0</span>);
 
-    SkiplistNode eraseable <span style="color:#f92672">=</span> update<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>0<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>eraseable <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> eraseable<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> num<span style="color:#f92672">)</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> level <span style="color:#f92672">=</span> eraseable<span style="color:#f92672">.</span><span style="color:#a6e22e">level</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        size<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">;</span>
-        levels<span style="color:#f92672">[</span>level<span style="color:#f92672">]</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> level<span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span>
-            update<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> eraseable<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
+    <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">eraseable</span> = <span style="color:#268bd2">update</span>[<span style="color:#268bd2">0</span>].<span style="color:#268bd2">next</span>[<span style="color:#268bd2">0</span>];
+    <span style="color:#859900">if</span> (<span style="color:#268bd2">eraseable</span> == <span style="color:#859900;font-weight:bold">null</span> || <span style="color:#268bd2">eraseable</span>.<span style="color:#268bd2">value</span> != <span style="color:#268bd2">num</span>)
+        <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">false</span>;
+    <span style="color:#859900">else</span> {
+        <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">level</span> = <span style="color:#268bd2">eraseable</span>.<span style="color:#268bd2">level</span>();
+        <span style="color:#268bd2">size</span>--;
+        <span style="color:#268bd2">levels</span>[<span style="color:#268bd2">level</span>]--;
+        <span style="color:#859900">for</span> (<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">0</span>; <span style="color:#268bd2">i</span> &lt; <span style="color:#268bd2">level</span>; <span style="color:#268bd2">i</span>++)
+            <span style="color:#268bd2">update</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] = <span style="color:#268bd2">eraseable</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>];
+        <span style="color:#859900">return</span> <span style="color:#859900;font-weight:bold">true</span>;
+    }
+}
 </code></pre></div><h3 id="heading-6">获取一个区间内的数</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findRange</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> begin<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#268bd2">List</span>&lt;<span style="color:#268bd2">Integer</span>&gt; <span style="color:#268bd2">findRange</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">begin</span>, <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">end</span>) {
+    <span style="color:#268bd2">List</span>&lt;<span style="color:#268bd2">Integer</span>&gt; <span style="color:#268bd2">list</span> = <span style="color:#859900">new</span> <span style="color:#268bd2">ArrayList</span>&lt;&gt;();
 
-    SkiplistNode cur <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> currentMaxLevel <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">&lt;</span> begin<span style="color:#f92672">)</span>
-            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> begin<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>cur <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> end<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-        cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">[</span>0<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#268bd2">SkiplistNode</span> <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">root</span>;
+    <span style="color:#859900">for</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">i</span> = <span style="color:#268bd2">currentMaxLevel</span> - <span style="color:#268bd2">1</span>; <span style="color:#268bd2">i</span> &gt;= <span style="color:#268bd2">0</span>; <span style="color:#268bd2">i</span>--) {
+        <span style="color:#859900">while</span>(<span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">value</span> &lt; <span style="color:#268bd2">begin</span>)
+            <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>];
+        <span style="color:#859900">if</span>(<span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>] != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">value</span> == <span style="color:#268bd2">begin</span>) {
+            <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">i</span>];
+            <span style="color:#859900">break</span>;
+        }
+    }
+    <span style="color:#859900">while</span>(<span style="color:#268bd2">cur</span> != <span style="color:#859900;font-weight:bold">null</span> &amp;&amp; <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">value</span> &lt;= <span style="color:#268bd2">end</span>) {
+        <span style="color:#268bd2">list</span>.<span style="color:#268bd2">add</span>(<span style="color:#268bd2">cur</span>.<span style="color:#268bd2">value</span>);
+        <span style="color:#268bd2">cur</span> = <span style="color:#268bd2">cur</span>.<span style="color:#268bd2">next</span>[<span style="color:#268bd2">0</span>];
+    }
 
-    <span style="color:#66d9ef">return</span> list<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+    <span style="color:#859900">return</span> <span style="color:#268bd2">list</span>;
+}
 </code></pre></div><h2 id="why-skip-list">Why Skip List？</h2>
 <p>原作者在其论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>中提到，相比于红黑树，跳表有很多优点。如：</p>
 <ol>
@@ -321,23 +321,24 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <h2 id="skip-list">Skip List的一些优化技巧</h2>
 <h3 id="o1level-generator">O(1)复杂度的level generator</h3>
 <p>参考<!-- raw HTML omitted -->这篇博客<!-- raw HTML omitted --><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>所写的内容，一般在实现随机生成的<code>level</code>时，会重复调用随机数生成器。如原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>中提到的<code>level</code>的生成算法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">randomLevel()
-	lvl :<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-	<span style="color:#f92672">-</span><span style="color:#f92672">-</span> random() that returns a random value in [<span style="color:#ae81ff">0.</span>.<span style="color:#ae81ff">.1</span>)
-	<span style="color:#66d9ef">while</span> random() <span style="color:#f92672">&lt;</span> p and lvl <span style="color:#f92672">&lt;</span> MaxLevel <span style="color:#66d9ef">do</span>
-		lvl :<span style="color:#f92672">=</span> lvl <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-	<span style="color:#66d9ef">return</span> lvl
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#268bd2">randomLevel</span>()
+	<span style="color:#268bd2">lvl</span> := <span style="color:#2aa198;font-weight:bold">1</span>
+	-- <span style="color:#268bd2">random</span>() <span style="color:#268bd2">that</span> <span style="color:#268bd2">returns</span> <span style="color:#268bd2">a</span> <span style="color:#268bd2">random</span> <span style="color:#268bd2">value</span> <span style="color:#268bd2">in</span> [<span style="color:#2aa198;font-weight:bold">0.</span>.<span style="color:#2aa198;font-weight:bold">.1</span>)
+	<span style="color:#859900">while</span> <span style="color:#268bd2">random</span>() &lt; <span style="color:#268bd2">p</span> <span style="color:#268bd2">and</span> <span style="color:#268bd2">lvl</span> &lt; <span style="color:#268bd2">MaxLevel</span> <span style="color:#859900">do</span>
+		<span style="color:#268bd2">lvl</span> := <span style="color:#268bd2">lvl</span> + <span style="color:#2aa198;font-weight:bold">1</span>
+	<span style="color:#859900">return</span> <span style="color:#268bd2">lvl</span>
 </code></pre></div><p>由于随机数生成的随机数是均匀分布的。所以，只需要调用一次随机数生成器就可以完成。从而做到$O(1)$的时间复杂度。具体实现如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLevel</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-	<span style="color:#66d9ef">int</span> flips <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">int</span> level <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>level<span style="color:#f92672">+</span><span style="color:#f92672">+</span> <span style="color:#f92672">&lt;</span> MAX_LEVEL <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#f92672">(</span>flips <span style="color:#f92672">&amp;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
-		flips <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900">static</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">getLevel</span>() {
+	<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">flips</span> = <span style="color:#268bd2">rand</span>.<span style="color:#268bd2">nextInt</span>();
+	<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">level</span> = <span style="color:#268bd2">0</span>;
+	<span style="color:#859900">while</span> (<span style="color:#268bd2">level</span>++ &lt; <span style="color:#268bd2">MAX_LEVEL</span> &amp;&amp; (<span style="color:#268bd2">flips</span> &amp; <span style="color:#268bd2">1</span>) != <span style="color:#268bd2">0</span>)
+		<span style="color:#268bd2">flips</span> &gt;&gt;= <span style="color:#268bd2">1</span>;
 
-	<span style="color:#66d9ef">return</span> level<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+	<span style="color:#859900">return</span> <span style="color:#268bd2">level</span>;
+}
 </code></pre></div><p>StackOverFlow上的一篇回答<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>对C++标准库中的set (底层是红黑树) 和其自己实现的一个跳表进行了benchmark。同时，这个回答还展示了其对自己实现的skiplist进行优化的过程。</p>
 <h2 id="simple-benchmark">Simple Benchmark</h2>
+<h2 id="heading-7">参考文献</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -438,6 +439,34 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
         </section>
 
     <script async src="https://htrekker.github.io//js/main.js"></script>
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
 
 
 
