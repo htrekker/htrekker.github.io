@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pasilo</title>
+    <title>Pasilo | An adventure of Internet.</title>
     <link>https://htrekker.github.io/</link>
-    <description>Recent content on Pasilo</description>
+    <description>Recent content on Pasilo | An adventure of Internet.</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 25 Dec 2019 14:57:04 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 13:14:55 +0800</lastBuildDate>
     
 	<atom:link href="https://htrekker.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo中使用latex数学公式</title>
+      <link>https://htrekker.github.io/post/math-formula-in-hugo/</link>
+      <pubDate>Sun, 29 Mar 2020 13:14:55 +0800</pubDate>
+      
+      <guid>https://htrekker.github.io/post/math-formula-in-hugo/</guid>
+      <description>&lt;p&gt;什么？在Hugo里不能愉快的使用latex？按这里👇&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>LeetCode 做题记录</title>
@@ -17,15 +26,6 @@
       
       <guid>https://htrekker.github.io/post/leetcode%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>&lt;p&gt;这是我的leetcode做题记录。主要用来记录做过的题和常用的算法。不定期更新&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Qucik Sort Done Right</title>
-      <link>https://htrekker.github.io/qucik-sort-done-right/</link>
-      <pubDate>Wed, 25 Dec 2019 14:57:04 +0800</pubDate>
-      
-      <guid>https://htrekker.github.io/qucik-sort-done-right/</guid>
-      <description>谈到快速排序大家肯定不会感到陌生，</description>
     </item>
     
     <item>
