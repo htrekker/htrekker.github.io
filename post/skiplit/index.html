@@ -188,7 +188,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <p>对于一个有序的数组，<strong>二分查找</strong>是一种非常高效的查询方式。其时间复杂度仅有$O(\log{n})$，这相比于顺序查询快了很多。如果我们把二分查找的搜索路径画出来，我们就会得到一种叫做<strong>平衡搜索树</strong>的东西（见下图）。</p>
 <p>此时，我们将左节点画平，右节点画直。这种数据结构就是跳表：</p>
 <h2 id="a-pretty-naive-implementation">A Pretty Naive Implementation</h2>
-<p>这个实现主要参考了作者的原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>和<!-- raw HTML omitted -->@somenzz的博客<!-- raw HTML omitted --><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>在这里先表示感谢！代码请见：<a href="https://github.com/htrekker/skiplist">https://github.com/htrekker/skiplist</a></p>
+<p>这个实现主要参考了作者的原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>和<u>@somenzz的博客</u><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>在这里先表示感谢！代码请见：<a href="https://github.com/htrekker/skiplist">https://github.com/htrekker/skiplist</a></p>
 <h3 id="heading-2">数据结构的设计</h3>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">class</span> <span style="color:#cb4b16">SkiplistNode</span> {
     <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">value</span>;
@@ -320,7 +320,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 </ol>
 <h2 id="skip-list">Skip List的一些优化技巧</h2>
 <h3 id="o1level-generator">O(1)复杂度的level generator</h3>
-<p>参考<!-- raw HTML omitted -->这篇博客<!-- raw HTML omitted --><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>所写的内容，一般在实现随机生成的<code>level</code>时，会重复调用随机数生成器。如原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>中提到的<code>level</code>的生成算法：</p>
+<p>参考<u>这篇博客</u><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>所写的内容，一般在实现随机生成的<code>level</code>时，会重复调用随机数生成器。如原论文<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>中提到的<code>level</code>的生成算法：</p>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#268bd2">randomLevel</span>()
 	<span style="color:#268bd2">lvl</span> := <span style="color:#2aa198;font-weight:bold">1</span>
 	-- <span style="color:#268bd2">random</span>() <span style="color:#268bd2">that</span> <span style="color:#268bd2">returns</span> <span style="color:#268bd2">a</span> <span style="color:#268bd2">random</span> <span style="color:#268bd2">value</span> <span style="color:#268bd2">in</span> [<span style="color:#2aa198;font-weight:bold">0.</span>.<span style="color:#2aa198;font-weight:bold">.1</span>)

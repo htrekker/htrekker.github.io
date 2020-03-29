@@ -101,7 +101,7 @@
         },
         "datePublished": "2019-12-25",
         "dateModified": "2019-12-25",
-        "wordCount":  527 ,
+        "wordCount":  537 ,
         
     }
     </script>
@@ -169,7 +169,7 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">3 min.</span> (<span class="word-count">527</span> words)</span></span>
+                        <span class="post-date">25 Dec 2019</span> <span class="reading-time">| <span class="estimated-reading-time">3 min.</span> (<span class="word-count">537</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
@@ -183,27 +183,27 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 <ol>
 <li>
 <p><strong><a href="https://leetcode-cn.com/problems/sorted-merge-lcci/">面试题 10.01. 合并排序的数组</a></strong></p>
-<p><!-- raw HTML omitted -->原地算法<!-- raw HTML omitted --> <!-- raw HTML omitted -->逆向双指针<!-- raw HTML omitted --></p>
+<p><tag>原地算法</tag> <tag>逆向双指针</tag></p>
 <p>做题记录：<a href="https://leetcode-cn.com/problems/sorted-merge-lcci/solution/yuan-di-suan-fa-shuang-bai-da-qia-ji-lu-by-htrekke/">原地算法，双百，打卡记录</a></p>
 </li>
 <li>
 <p><strong><a href="https://leetcode-cn.com/problems/rotting-oranges/">994. 腐烂的橘子</a></strong></p>
-<p><!-- raw HTML omitted -->多源BFS<!-- raw HTML omitted --></p>
+<p><tag>多源BFS</tag></p>
 <p>做题记录：<a href="https://leetcode-cn.com/problems/rotting-oranges/solution/bfszuo-ti-ji-lu-2-by-htrekker/">BFS，做题记录2</a></p>
 </li>
 <li>
 <p><strong><a href="https://leetcode-cn.com/problems/distribute-candies-to-people/">1103. 分糖果 II</a></strong></p>
-<p><!-- raw HTML omitted -->等差数列<!-- raw HTML omitted --></p>
+<p><tag>等差数列</tag></p>
 <p>做题记录：<a href="https://leetcode-cn.com/problems/distribute-candies-to-people/solution/shu-xue-fang-fa-zuo-ti-ji-lu-3-by-htrekker/">数学方法，做题记录3</a></p>
 </li>
 <li>
 <p><strong><a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/">面试题57 - II. 和为s的连续正数序列</a></strong></p>
-<p><!-- raw HTML omitted -->双指针<!-- raw HTML omitted --> <!-- raw HTML omitted -->滑动窗口<!-- raw HTML omitted --> <!-- raw HTML omitted -->List.toArray(T[] a)方法<!-- raw HTML omitted --></p>
+<p><tag>双指针</tag> <tag>滑动窗口</tag> <tag>List.toArray(T[] a)方法</tag></p>
 <p>做题记录：<a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/shuang-zhi-zhen-hua-dong-chuang-kou-da-qia-ji-lu-4/">双指针滑动窗口，打卡记录4</a></p>
 </li>
 <li>
 <p><strong><a href="https://leetcode-cn.com/problems/count-primes/">204. 计数质数</a></strong></p>
-<p><!-- raw HTML omitted -->素数打表<!-- raw HTML omitted --> <!-- raw HTML omitted -->欧拉筛选法<!-- raw HTML omitted --></p>
+<p><tag>素数打表</tag> <tag>欧拉筛选法</tag></p>
 <p>做题记录：<a href="https://leetcode-cn.com/problems/count-primes/solution/zuo-ti-ji-lu-shai-xuan-su-shu-by-htrekker/">做题记录，筛选素数</a></p>
 </li>
 </ol>
@@ -349,7 +349,8 @@ $$</p>
 }
 </code></pre></div><h2 id="heading-8">素数筛选</h2>
 <h3 id="heading-9">埃氏筛</h3>
-<p><img src="https://pic.leetcode-cn.com/23d348bef930ca4bb73f749500f664ccffc5e41467aac0ba9787025392ca207b-1.gif" alt="sieve-of-Eratosthenes-in-motion"></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif" alt="sieve-of-Eratosthenes-in-motion"></p>
+<center style="color: rgb(90,90,90); font-size: 10px;">图片来自维基百科</center>
 <p>上图是埃式筛选法的动态图片解析。算法的原理是通过已知道的素数标记未知的合数，通过标记合数来最终筛选出所有的素数。</p>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#859900">public</span> <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">countPrimes_a</span>(<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">n</span>) {
     <span style="color:#859900">if</span>(<span style="color:#268bd2">n</span> &lt;= <span style="color:#268bd2">2</span>) <span style="color:#859900">return</span> <span style="color:#268bd2">0</span>;
