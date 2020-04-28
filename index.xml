@@ -37,5 +37,14 @@
       <description>&lt;p&gt;听说跳表很厉害，那么&amp;hellip;一起来学学跳表吧！&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>何为惰性求值？</title>
+      <link>https://htrekker.github.io/post/what-is-lazy-evaluation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://htrekker.github.io/post/what-is-lazy-evaluation/</guid>
+      <description>&lt;p&gt;例如&lt;code&gt;5+3&lt;/code&gt;的值为&lt;code&gt;8&lt;/code&gt;。我们的大脑也是这种&lt;strong&gt;及早求值&lt;/strong&gt;：每当有人跟你说，“她真是个厉害的程序员！”。如果&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
