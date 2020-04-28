@@ -7,25 +7,39 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <meta property="og:title" content=" Hugo中使用latex数学公式 &middot;  Pasilo | An adventure of Internet." />
+    <meta property="og:title" content=" 何为惰性求值？ &middot;  Pasilo | An adventure of Internet." />
     <meta property="og:site_name" content="Pasilo | An adventure of Internet." />
-    <meta property="og:url" content="https://htrekker.github.io/post/math-formula-in-hugo/" />
+    <meta property="og:url" content="https://htrekker.github.io/post/what-is-lazy-evaluation/" />
 
     
     <meta property="og:type" content="article" />
-    <meta property="og:article:published_time" content="2020-03-29T13:14:55&#43;08:00" />
+    <meta property="og:article:published_time" content="0001-01-01T00:00:00Z" />
     
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
-    <meta name="twitter:title" content="Hugo中使用latex数学公式" />
+    <meta name="twitter:title" content="何为惰性求值？" />
     
-    <meta name="twitter:description" content="什么？在Hugo里不能愉快的使用latex？按这里👇" />
-    <meta name="twitter:url" content="https://htrekker.github.io/post/math-formula-in-hugo/" />
+    <meta name="twitter:description" content="例如5&#43;3的值为8。我们的大脑也是这种及早求值：每当有人跟你说，“她真是个厉害的程序员！”。如果&hellip;
+ 本文翻译自What is Lazy Evaluation? — Programming Word of the Day 欢迎关注原作者！
+ 当编译器遇到一个表达式时，通常都要尝试去计算这个表达式的值。
+例如5&#43;3的值为8。我们的大脑也是这种及早求值：每当有人跟你说，“她真是个厉害的程序员！”。如果“她”已经在之前的对话中提到过，那么你的大脑就会将“她”这个代词指向那个人（求值）。
+虽然，大部分语言都使用这种及早求值的方式，但这种方式并不是很高效。因为，并不是所有的表达式都有计算的价值。例如，一个函数的参数可能不会被使用，所以我们更没有必要计算它们。
+def somFunction(x, y) = return x &#43; 1 someFunction(3, 3 &#43; 2) 在上面这个例子中，计算表达式3&#43;2的值是没有任何意义的。因为，它根本就没有被使用过。==只计算需要的值的这种计算方式被称作惰性求值，与之相反的方式（立即计算表达式）被称作及早求值==
+惰性求值之所以称为“惰性”是因为编译器得了”拖延症“。这种编译器不会成为一个好学生或者提前预习的学生。相反，它只会推迟对表达式的计算，直到真正的需要这个表达式的值时。就好像计算完之后他就会说：”唉，好吧。我算还不行吗！(╯‵□′)╯︵┻━┻“
+就像一个懒惰的学生一样，一个”懒惰“的编译器的效率会高很多 如果想要惰性求值变得更高效，它需要使用记忆化。换句话说就是，编译器需要在内存中创建一个字典。这个字典的键就是这个变量的名字，键对应的值就是这个表达式的计算结果。当编译器遇到一个已经被计算好的变量时，它只需要简单的在这个字典中查找出其所对应的值即可。
+ 除了在性能上的优势以外，惰性求值还有以下几个特点，是得它非常的有趣。大多数的编程语言有一种所谓的短路行为用于优化布尔运算。例如，当一个
+短路行为往往被硬编码到编译器当中，他们都有一些特定的代码去执行这种逻辑。但是，有了惰性求值就在不再需要这种硬编码。这使得编译器变得更简单并且更容易理解。你可以将
+ 惰性求值另一个很有趣的“副产物”是：惰性求值可以计算无穷列表。在一个正常的编译器中，无穷列表这个概念实际上并不存在。因为编译器总是想尽早的计算表达式，所以编译器会真的尝试去计算一个无穷列表。这回导致内存被耗尽，从而程序无法正常运行。
+另外，一个具备惰性求值的编译器只会去计算一定用得到的表达式的值。即使你定义了一个无穷列表，但这个无穷列表实际上并不需要全部计算其值。一个无穷列表看上去类似于：
+def addOne(n) = [n] &#43; addOne(n &#43; 1) // [1, 2, 3, 4, 5, 6, ...] list = addOne(1) addOne会递归地将它的参数添加到这个列表中。这个递归式不会有终止条件：它会永远的运行下去。
+之后我们可以定义一个无穷列表，这个列表的将会是上面这个函数当参数为1时的返回值。当我们不真正计算这个无穷列表的值时，这段代码目前并不会崩溃。你也许会问了：”既然我们没法用这个列表，那么我为什么还要定义它？“虽然，我们不能使用整个列表，但是我们可以使用它的一部分！
+oneToThree = list.takeFirst(3) print(oneToThree) // [1, 2, 3] def range(start, end) = list." />
+    <meta name="twitter:url" content="https://htrekker.github.io/post/what-is-lazy-evaluation/" />
     
 
-    <title> Hugo中使用latex数学公式 &middot;  Pasilo | An adventure of Internet.</title>
+    <title> 何为惰性求值？ &middot;  Pasilo | An adventure of Internet.</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="preload" href="https://htrekker.github.io//js/main.js" as="script" />
@@ -56,7 +70,7 @@
     
 
     
-    <link rel="canonical" href="https://htrekker.github.io/post/math-formula-in-hugo/" />
+    <link rel="canonical" href="https://htrekker.github.io/post/what-is-lazy-evaluation/" />
 
     
     <script type="application/ld+json">
@@ -65,9 +79,9 @@
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https:\/\/htrekker.github.io\/post\/math-formula-in-hugo\/"
+          "@id": "https:\/\/htrekker.github.io\/post\/what-is-lazy-evaluation\/"
         },
-        "headline": "Hugo中使用latex数学公式",
+        "headline": "何为惰性求值？",
         "description": "",
         "author": {
             "@type": "Person",
@@ -99,9 +113,9 @@
           "height": 80,
           "width": 80
         },
-        "datePublished": "2020-03-29",
-        "dateModified": "2020-03-29",
-        "wordCount":  206 ,
+        "datePublished": "0001-01-01",
+        "dateModified": "0001-01-01",
+        "wordCount":  85 ,
         
     }
     </script>
@@ -199,85 +213,53 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
                 <header class="post-header">
                 
                     <span class="post-meta">
-                        <span class="post-date">29 Mar 2020</span> <span class="reading-time">| <span class="estimated-reading-time">1 min.</span> (<span class="word-count">206</span> words)</span></span>
+                        <span class="post-date">1 Jan 0001</span> <span class="reading-time">| <span class="estimated-reading-time">1 min.</span> (<span class="word-count">85</span> words)</span></span>
                     </span>
                 <div class="clear"></div>
                 
-                <h1 class="post-title">Hugo中使用latex数学公式</h1>
+                <h1 class="post-title">何为惰性求值？</h1>
               </header>
 
               <section class="post-content">
                 
-                  <p>什么？在Hugo里不能愉快的使用latex？按这里👇</p>
-<p><strong>本文翻译自<a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo</a>，欢迎关注原作者!</strong></p>
-<h1 id="hugomathjax">在Hugo中设置mathjax</h1>
-<h2 id="heading">传统手段</h2>
-<p><a href="https://www.mathjax.org/">Mathjax</a>是一个JavaScript库，它可以帮助用户将数学表达式集成到博客或者网站中。但是，其配值的方法对于新手来说不是很友好。</p>
-<h3 id="1-hugomathjax">1. 根据Hugo的文档安装MathJax</h3>
-<p>你可以在<a href="https://gohugo.io/tutorials/mathjax/">这里</a>找到需要的内容。为了安装MathJax你需要在你网站的<code>/layouts/partials</code>目录下插入如下代码。如果，能够够将下面的代码放到<strong>math_jaxsupport.html</strong>中更好！例如：</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#268bd2;font-weight:bold">script</span> <span style="color:#268bd2">type</span>=<span style="color:#2aa198">&#34;text/javascript&#34;</span>
-  <span style="color:#268bd2">src</span>=<span style="color:#2aa198">&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span>&gt;
-&lt;/<span style="color:#268bd2;font-weight:bold">script</span>&gt;
+                  <p>例如<code>5+3</code>的值为<code>8</code>。我们的大脑也是这种<strong>及早求值</strong>：每当有人跟你说，“她真是个厉害的程序员！”。如果&hellip;</p>
+<!-- more -->
+<blockquote>
+<p>本文翻译自<a href="https://medium.com/background-thread/what-is-lazy-evaluation-programming-word-of-the-day-8a6f4410053f">What is Lazy Evaluation? — Programming Word of the Day</a> 欢迎关注原作者！</p>
+</blockquote>
+<p>当编译器遇到一个表达式时，通常都要尝试去计算这个表达式的值。</p>
+<p>例如<code>5+3</code>的值为<code>8</code>。我们的大脑也是这种<strong>及早求值</strong>：每当有人跟你说，“她真是个厉害的程序员！”。如果“她”已经在之前的对话中提到过，那么你的大脑就会将“她”这个代词指向那个人（求值）。</p>
+<p>虽然，大部分语言都使用这种<strong>及早求值</strong>的方式，但这种方式并不是很高效。因为，并不是所有的表达式都有计算的价值。例如，一个函数的参数可能不会被使用，所以我们更没有必要计算它们。</p>
+<pre><code>def somFunction(x, y) =
+    return x + 1
 
-&lt;<span style="color:#268bd2;font-weight:bold">script</span> <span style="color:#268bd2">type</span>=<span style="color:#2aa198">&#34;text/x-mathjax-config&#34;</span>&gt;
-<span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">Config</span>({
-  <span style="color:#268bd2">tex2jax</span>: {
-    <span style="color:#268bd2">inlineMath</span>: [[<span style="color:#2aa198">&#39;$&#39;</span>,<span style="color:#2aa198">&#39;$&#39;</span>], [<span style="color:#2aa198">&#39;\\(&#39;</span>,<span style="color:#2aa198">&#39;\\)&#39;</span>]],
-    <span style="color:#268bd2">displayMath</span>: [[<span style="color:#2aa198">&#39;$$&#39;</span>,<span style="color:#2aa198">&#39;$$&#39;</span>], [<span style="color:#2aa198">&#39;\[&#39;</span>,<span style="color:#2aa198">&#39;\]&#39;</span>]],
-    <span style="color:#268bd2">processEscapes</span>: <span style="color:#859900;font-weight:bold">true</span>,
-    <span style="color:#268bd2">processEnvironments</span>: <span style="color:#859900;font-weight:bold">true</span>,
-    <span style="color:#268bd2">skipTags</span>: [<span style="color:#2aa198">&#39;script&#39;</span>, <span style="color:#2aa198">&#39;noscript&#39;</span>, <span style="color:#2aa198">&#39;style&#39;</span>, <span style="color:#2aa198">&#39;textarea&#39;</span>, <span style="color:#2aa198">&#39;pre&#39;</span>],
-    <span style="color:#268bd2">TeX</span>: { <span style="color:#268bd2">equationNumbers</span>: { <span style="color:#268bd2">autoNumber</span>: <span style="color:#2aa198">&#34;AMS&#34;</span> },
-         <span style="color:#268bd2">extensions</span>: [<span style="color:#2aa198">&#34;AMSmath.js&#34;</span>, <span style="color:#2aa198">&#34;AMSsymbols.js&#34;</span>] }
-  }
-});
-&lt;/<span style="color:#268bd2;font-weight:bold">script</span>&gt;
+someFunction(3, 3 + 2)
+</code></pre><p>在上面这个例子中，计算表达式<code>3+2</code>的值是没有任何意义的。因为，它根本就没有被使用过。==只计算需要的值的这种计算方式被称作<strong>惰性求值</strong>，与之相反的方式（立即计算表达式）被称作<strong>及早求值</strong>==</p>
+<p><strong>惰性求值</strong>之所以称为“惰性”是因为编译器得了”拖延症“。这种编译器不会成为一个好学生或者提前预习的学生。相反，它只会推迟对表达式的计算，直到真正的需要这个表达式的值时。就好像计算完之后他就会说：”唉，好吧。我算还不行吗！(╯‵□′)╯︵┻━┻“</p>
+<p>就像一个懒惰的学生一样，一个”懒惰“的编译器的效率会高很多  如果想要<strong>惰性求值</strong>变得更高效，它需要使用<u>记忆化</u>。换句话说就是，编译器需要在内存中创建一个字典。这个字典的<em>键</em>就是这个变量的名字，<em>键</em>对应的<em>值</em>就是这个表达式的计算结果。当编译器遇到一个已经被计算好的变量时，它只需要简单的在这个字典中查找出其所对应的值即可。</p>
+<hr>
+<p>除了在性能上的优势以外，<strong>惰性求值</strong>还有以下几个特点，是得它非常的有趣。大多数的编程语言有一种所谓的<strong>短路</strong>行为用于优化布尔运算。例如，当一个</p>
+<p>短路行为往往被硬编码到编译器当中，他们都有一些特定的代码去执行这种逻辑。但是，有了<strong>惰性求值</strong>就在不再需要这种硬编码。这使得编译器变得更简单并且更容易理解。你可以将</p>
+<hr>
+<p><strong>惰性求值</strong>另一个很有趣的“副产物”是：<strong>惰性求值</strong>可以计算无穷列表。在一个正常的编译器中，无穷列表这个概念实际上并不存在。因为编译器总是想尽早的计算表达式，所以编译器会真的尝试去计算一个无穷列表。这回导致内存被耗尽，从而程序无法正常运行。</p>
+<p>另外，一个具备<strong>惰性求值</strong>的编译器只会去计算一定用得到的表达式的值。即使你定义了一个无穷列表，但这个无穷列表实际上并不需要全部计算其值。一个无穷列表看上去类似于：</p>
+<pre><code>def addOne(n) = [n] + addOne(n + 1)
 
-&lt;<span style="color:#268bd2;font-weight:bold">script</span> <span style="color:#268bd2">type</span>=<span style="color:#2aa198">&#34;text/x-mathjax-config&#34;</span>&gt;
-  <span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">Queue</span>(<span style="color:#859900">function</span>() {
-    <span style="color:#93a1a1;font-style:italic">// Fix &lt;code&gt; tags after MathJax finishes running. This is a
-</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#93a1a1;font-style:italic">// hack to overcome a shortcoming of Markdown. Discussion at
-</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#93a1a1;font-style:italic">// https://github.com/mojombo/jekyll/issues/199
-</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#859900">var</span> <span style="color:#268bd2">all</span> = <span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">getAllJax</span>(), <span style="color:#268bd2">i</span>;
-    <span style="color:#859900">for</span>(<span style="color:#268bd2">i</span> = <span style="color:#2aa198;font-weight:bold">0</span>; <span style="color:#268bd2">i</span> &lt; <span style="color:#268bd2">all</span>.<span style="color:#268bd2">length</span>; <span style="color:#268bd2">i</span> += <span style="color:#2aa198;font-weight:bold">1</span>) {
-        <span style="color:#268bd2">all</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">SourceElement</span>().<span style="color:#268bd2">parentNode</span>.<span style="color:#268bd2">className</span> += <span style="color:#2aa198">&#39; has-jax&#39;</span>;
-    }
-});
-&lt;/<span style="color:#268bd2;font-weight:bold">script</span>&gt;
-</code></pre></div><p>之后，你还需要将在<strong>footer.html</strong>或者<strong>header.html</strong>中引用<strong>mathjax_support.html</strong>。我选择在<strong>header.html</strong>中的``标签之前插入。如下：</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">{{ partial &#34;mathjax_support.html&#34; . }}
-</code></pre></div><p>如果你像我一样“走运”，那么以上的方法应该没有任何效果:)。</p>
-<h3 id="2-">2. 第二种方法</h3>
-<p>经过一番google，我找到一种<a href="https://discuss.gohugo.io/t/solved-mathjax-stopped-working/5946">可行的方法</a>。这里我要感谢这个方法的作者！这个办法的思想是稍微改动以下之前的代码，将上面的所有代码都放置在同一个``标签下，并给该标签加上<code>async</code>。如下：</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">&lt;<span style="color:#268bd2">script</span> <span style="color:#268bd2">type</span>=<span style="color:#2aa198">&#34;text/javascript&#34;</span> <span style="color:#268bd2">async</span>
-  <span style="color:#268bd2">src</span>=<span style="color:#2aa198">&#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span>&gt;
-  <span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">Config</span>({
-  <span style="color:#268bd2">tex2jax</span>: {
-    <span style="color:#268bd2">inlineMath</span>: [[<span style="color:#2aa198">&#39;$&#39;</span>,<span style="color:#2aa198">&#39;$&#39;</span>], [&#39;\\(<span style="color:#2aa198">&#39;,&#39;</span>\\)&#39;]],
-    <span style="color:#268bd2">displayMath</span>: [[&#39;<span style="color:#268bd2">$$</span><span style="color:#2aa198">&#39;,&#39;</span><span style="color:#268bd2">$$</span>&#39;]],
-    <span style="color:#268bd2">processEscapes</span>: <span style="color:#859900;font-weight:bold">true</span>,
-    <span style="color:#268bd2">processEnvironments</span>: <span style="color:#859900;font-weight:bold">true</span>,
-    <span style="color:#268bd2">skipTags</span>: [&#39;<span style="color:#268bd2">script</span>&#39;, &#39;<span style="color:#268bd2">noscript</span>&#39;, &#39;<span style="color:#268bd2">style</span>&#39;, &#39;<span style="color:#268bd2">textarea</span>&#39;, &#39;<span style="color:#268bd2">pre</span>&#39;],
-    <span style="color:#268bd2">TeX</span>: { <span style="color:#268bd2">equationNumbers</span>: { <span style="color:#268bd2">autoNumber</span>: <span style="color:#2aa198">&#34;AMS&#34;</span> },
-         <span style="color:#268bd2">extensions</span>: [<span style="color:#2aa198">&#34;AMSmath.js&#34;</span>, <span style="color:#2aa198">&#34;AMSsymbols.js&#34;</span>] }
-  }
-  });
-  <span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">Queue</span>(<span style="color:#268bd2">function</span>() {
-    <span style="color:#93a1a1;font-style:italic">// Fix &lt;code&gt; tags after MathJax finishes running. This is a
-</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#93a1a1;font-style:italic">// hack to overcome a shortcoming of Markdown. Discussion at
-</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#93a1a1;font-style:italic">// https://github.com/mojombo/jekyll/issues/199
-</span><span style="color:#93a1a1;font-style:italic"></span>    <span style="color:#268bd2">var</span> <span style="color:#268bd2">all</span> = <span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">getAllJax</span>(), <span style="color:#268bd2">i</span>;
-    <span style="color:#859900">for</span>(<span style="color:#268bd2">i</span> = <span style="color:#268bd2">0</span>; <span style="color:#268bd2">i</span> &lt; <span style="color:#268bd2">all</span>.<span style="color:#268bd2">length</span>; <span style="color:#268bd2">i</span> += <span style="color:#268bd2">1</span>) {
-        <span style="color:#268bd2">all</span>[<span style="color:#268bd2">i</span>].<span style="color:#268bd2">SourceElement</span>().<span style="color:#268bd2">parentNode</span>.<span style="color:#268bd2">className</span> += &#39; <span style="color:#268bd2">has</span>-<span style="color:#268bd2">jax</span>&#39;;
-    }
-  });
+// [1, 2, 3, 4, 5, 6, ...]
+list = addOne(1)
+</code></pre><p><code>addOne</code>会递归地将它的参数添加到这个列表中。这个递归式不会有终止条件：它会永远的运行下去。</p>
+<p>之后我们可以定义一个无穷列表，这个列表的将会是上面这个函数当参数为<code>1</code>时的返回值。当我们不真正计算这个无穷列表的值时，这段代码目前并不会崩溃。你也许会问了：”既然我们没法用这个列表，那么我为什么还要定义它？“虽然，我们不能使用<em>整个</em>列表，但是我们可以使用它的一部分！</p>
+<pre><code>oneToThree = list.takeFirst(3)
+print(oneToThree) // [1, 2, 3]
 
-  <span style="color:#268bd2">MathJax</span>.<span style="color:#268bd2">Hub</span>.<span style="color:#268bd2">Config</span>({
-  <span style="color:#93a1a1;font-style:italic">// Autonumbering by mathjax
-</span><span style="color:#93a1a1;font-style:italic"></span>  <span style="color:#268bd2">TeX</span>: { <span style="color:#268bd2">equationNumbers</span>: { <span style="color:#268bd2">autoNumber</span>: <span style="color:#2aa198">&#34;AMS&#34;</span> } }
-  });
-&lt;/<span style="color:#268bd2">script</span>&gt;
-</code></pre></div><p>现在，如果你的<strong>mathjax_support.html</strong>和上面的代码相同。那么，你的网站就能正常显示latex了！</p>
+def range(start, end) = 
+	list.takeElementsBetween(start - 1, end - 1)
+	
+print(range(5, 10)) // [5, 6, 7, 8, 9]
+</code></pre><p>只取前几个元素或者取在某个特定区间中的元素，我们可以使用一个无穷列表！我们可以使用这种方式去定义范围，序列，周期，非连续字典的键，输入流和其它有用的概念。</p>
+<p>支持<strong>惰性求值</strong>的语言往往都是函数式编程，如Haskell，其默认的求值方式是<strong>惰性求值</strong>。有语言例如：OCaml或者Scheme，允许你使用<strong>惰性求值</strong>进行优化。其他如Swift或者Perl6的语言仅对其列表支持<strong>惰性求值</strong>。只有少量语言的编译器支持<strong>惰性求值</strong>的原因是用OOP的方式实现需要相当的技巧。</p>
+<p><strong>惰性求值</strong>的高效只有当变量的状态不变，如果变量的状态处于持续的变化中，记忆化就没用任何用处了，并且此时<strong>惰性求值</strong>会比<strong>及早求值</strong>更慢。所以，我要对所有的“懒学生”说：如果你们做出正确的选择，你们会比那些提前几周就预习的学生们更有效率!:)</p>
+
               </section>
 
               <footer class="post-footer">
@@ -299,15 +281,15 @@ html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-t
 
             <nav class="post-nav">
                 
-                
-                    <a class="post-nav-item post-nav-prev" href="https://htrekker.github.io/post/leetcode%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">
+                    <a class="post-nav-item post-nav-next" href="https://htrekker.github.io/post/skiplit/">
                         <section class="post-nav-teaser">
-                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
                             <span class="post-nav-info">
-                                <h4 class="post-nav-title">LeetCode 做题记录</h4>
+                                <h4 class="post-nav-title">Skip List A Brief Introduction</h4>
                             </span>
                         </section>
                     </a>
+                
                 
                 <div class="clear"></div>
             </nav>
